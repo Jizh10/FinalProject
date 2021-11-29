@@ -1,15 +1,18 @@
+<!DOCTYPE html>
 <html>
 <head>
 <style>
 body {font-family: Arial;}
 
+/* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
 }
 
-.tab button{
+/* Style the buttons inside the tab */
+.tab button {
   background-color: inherit;
   float: left;
   border: none;
@@ -20,57 +23,60 @@ body {font-family: Arial;}
   font-size: 17px;
 }
 
+/* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
-  }
+  background-color: #ddd;
+}
 
-  .tab button.active {
-    background-color: #ccc;
-  }
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
 
-  .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
-  </style>
-    <title>Final Project</title>
-  </head>
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
 
-  <body>
+
+<div class="tab">
+  <button class="tablinks" onclick="clickHandle(event, 'normal')">Normal Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'rapid')">Rapid Mode</button>
+</div>
+
+<div id="normal" class="tabcontent">
+	<p>Current Angle: </p>
+    <p>Enter Desired Angle: </p>
     <br>
-    <div class="tab">
-      <button class="tablinks" onclick="clickHandle(event, 'normal')">Normal Mode</button>
-      <button class="tablinks" onclick="clickHandle(event, 'rapid')">Rapid Mode</button>
-    </div>
+    <p>Current Position: </p>
+</div>
 
-    <div id="normal" class="tabcontent">
-      <p>Current Angle: </p>
-      <p>Enter Desired Angle: </p>
-      <br>
-      <p>Current Position: </p>
-    </div>
+<div id="rapid" class="tabcontent">
+  	<p>No Position Set: </p> 
+</div>
 
-    <div id="rapid" class="tabcontent">
-      <p>No Position Set: </p>
-    </div>
 
-    <script>
-      function clickHandle(event, mode) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace("active", "");
-        }
-        document.getElementsById(mode).style.display = "block"
-        event.currentTarget.className += " active";
-      }
-    </script>
-
-  </body>
-</html>
+<script>
+function clickHandle(event, mode) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(mode).style.display = "block";
+  event.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html> 
