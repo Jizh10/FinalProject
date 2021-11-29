@@ -67,6 +67,12 @@ body {font-family: Arial;}
 
 <div id="step" class="tabcontent">
   <form action="/cgi-bin/final_project.py" method="POST">
+    <p>Enter Desired Angle: </p>
+    <br>
+    <p>Current Position: </p>
+    <div class="tab">
+      <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
+      <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
     <input type = "submit" name = "step" value = "left step">
     <input type = "submit" name = "step" value = "right step">
   </form>
