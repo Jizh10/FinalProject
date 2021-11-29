@@ -43,11 +43,13 @@ body {font-family: Arial;}
 </style>
 </head>
 <body>
-
+<br>
 
 <div class="tab">
   <button class="tablinks" onclick="clickHandle(event, 'normal')">Normal Mode</button>
   <button class="tablinks" onclick="clickHandle(event, 'rapid')">Rapid Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
+  <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
 </div>
 
 <div id="normal" class="tabcontent">
@@ -58,9 +60,22 @@ body {font-family: Arial;}
 </div>
 
 <div id="rapid" class="tabcontent">
-  	<p>No Position Set: </p> 
+  <p>No Position Set: </p> 
 </div>
 
+<div id="step" class="tabcontent">
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "submit" name = "step" value = "left step">
+    <input type = "submit" name = "step" value = "right step">
+  </form>
+</div>
+
+<div id="position" class="tabcontent">
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "text" name = "position">
+    <input type = "submit" value = "position">
+  </form>
+</div>
 
 <script>
 function clickHandle(event, mode) {
