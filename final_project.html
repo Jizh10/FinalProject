@@ -52,13 +52,13 @@ body {font-family: Arial;}
 
 <div id="normal" class="tabcontent">
 	<p>Current Angle: </p>
-    <p>Enter Desired Angle: </p>
-    <br>
-    <p>Current Position: </p>
-    <div class="tab">
-      <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
-      <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
-    </div>
+  <p>Enter Desired Angle: </p>
+  <br>
+  <p>Current Position: </p>
+  <div class="tab">
+    <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
+    <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
+  </div>
 </div>
 
 <div id="rapid" class="tabcontent">
@@ -67,6 +67,7 @@ body {font-family: Arial;}
 
 <div id="step" class="tabcontent">
   <form action="/cgi-bin/final_project.py" method="POST">
+    <p>Current Angle: </p>
     <p>Enter Desired Angle: </p>
     <br>
     <p>Current Position: </p>
@@ -80,6 +81,14 @@ body {font-family: Arial;}
 
 <div id="position" class="tabcontent">
   <form action="/cgi-bin/final_project.py" method="POST">
+    <p>Current Angle: </p>
+    <p>Enter Desired Angle: </p>
+    <br>
+    <p>Current Position: </p>
+    <div class="tab">
+      <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
+      <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
+    </div>
     <input type = "text" name = "position">
     <input type = "submit" value = "submit">
   </form>
