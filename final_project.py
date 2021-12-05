@@ -10,6 +10,11 @@ data = cgi.FieldStorage()
 output = {}
 step = data.getvalue('step')
 position = data.getvalue('position')
+output['step'] = step
+output['position'] = position
+
+with open('final_project.text', 'w') as f:
+  json.dump(output,f)
 
 normalTab = ""
 rapidTab = ""
