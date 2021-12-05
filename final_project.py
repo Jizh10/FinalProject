@@ -1,4 +1,5 @@
-#!/usr/bin/python37allimport cgi
+#!/usr/bin/python37all
+import cgi
 import json
 from urllib.request import urlopen
 from urllib.parse import urlencode
