@@ -4,6 +4,13 @@ import json
 from urllib.request import urlopen
 from urllib.parse import urlencode
 
+# parse the data into json format
+data = cgi.FieldStorage()
+output = {}
+
+
+
+
 # html page format
 html = """Content-type: text/html
 
@@ -128,5 +135,7 @@ function clickHandle(event, mode) {
    
 </body>
 </html>
-"""
+""".format(
+
+)
 print(html)
