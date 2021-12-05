@@ -7,8 +7,23 @@ from urllib.parse import urlencode
 # parse the data into json format
 data = cgi.FieldStorage()
 output = {}
+step = data.getvalue('step')
+position = data.getvalue('position')
+
+normalTab = ""
+rapidTab = ""
+stepTab = ""
+posTab = ""
 
 
+if step != "":
+  normalTab = "defaultMode"
+  stepTab = "defaultStep"
+elif position != "":
+  normalTab = "defaultMode"
+  posTab = "defaultStep"
+else:
+  rapidTab = "defaultMode"
 
 
 # html page format
@@ -66,8 +81,8 @@ body {font-family: Arial;}
 <br>
 
 <div class="tab">
-  <button class="tablinks" onclick="clickHandle(event, 'normal')">Normal Mode</button>
-  <button class="tablinks" onclick="clickHandle(event, 'rapid')">Rapid Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'normal')" id={normalTab}>Normal Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'rapid')" id={rapidTab}>Rapid Mode</button>
 </div>
 
 <div id="normal" class="tabcontent">
@@ -76,8 +91,8 @@ body {font-family: Arial;}
   <br>
   <p>Current Position: </p>
   <div class="tab">
-    <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
-    <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
+    <button class="tablinks" onclick="clickHandle(event, 'step') id={stepTab}">Adjust By Step</button>
+    <button class="tablinks" onclick="clickHandle(event, 'position') id={posTab}">Adjust By Position</button>
   </div>
 </div>
 
@@ -131,11 +146,17 @@ function clickHandle(event, mode) {
   document.getElementById(mode).style.display = "block";
   event.currentTarget.className += " active";
 }
+
+document.getElementById("defaultMode").click();
+document.getElementById("defaultStep").click();
 </script>
-   
+
 </body>
 </html>
 """.format(
-
+  normalTab=normalTab,
+  rapidTab=rapidTab,
+  stepTab=stepTab,
+  posTab=posTab
 )
 print(html)
