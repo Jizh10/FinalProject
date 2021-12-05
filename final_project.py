@@ -1,4 +1,5 @@
 #!/usr/bin/python37all
+from jinja2 import Template
 import cgi
 import json
 from urllib.request import urlopen
@@ -26,7 +27,7 @@ else:
 
 
 # html page format
-html = """Content-type: text/html
+html = Template("""Content-type: text/html
 
 <html>
 <head>
@@ -80,8 +81,8 @@ body {font-family: Arial;}
 <br>
 
 <div class="tab">
-  <button class="tablinks" onclick="clickHandle(event, 'normal')" id={normalTab}>Normal Mode</button>
-  <button class="tablinks" onclick="clickHandle(event, 'rapid')" id={rapidTab}>Rapid Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'normal')" id={{normalTab}}>Normal Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'rapid')" id={{rapidTab}}>Rapid Mode</button>
 </div>
 
 <div id="normal" class="tabcontent">
@@ -90,8 +91,8 @@ body {font-family: Arial;}
   <br>
   <p>Current Position: </p>
   <div class="tab">
-    <button class="tablinks" onclick="clickHandle(event, 'step') id={stepTab}">Adjust By Step</button>
-    <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
+    <button class="tablinks" onclick="clickHandle(event, 'step') id={{stepTab}}">Adjust By Step</button>
+    <button class="tablinks" onclick="clickHandle(event, 'position' id={{posTab}})">Adjust By Position</button>
   </div>
 </div>
 
@@ -152,9 +153,12 @@ document.getElementById("defaultStep").click();
 
 </body>
 </html>
-""".format(
+""")
+
+html = html.render(
   normalTab=normalTab,
   rapidTab=rapidTab,
   stepTab=stepTab,
+  posTab=posTab
 )
 print(html)
