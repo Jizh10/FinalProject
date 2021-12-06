@@ -97,7 +97,7 @@ body {font-family: Arial;}
   <br>
   <p>Current Position: </p>
   <div class="tab">
-    <button class="tablinks" onclick="clickHandle(event, 'step') id={{stepTab}}">Adjust By Step</button>
+    <button class="tablinks" onclick="clickHandle(event, 'step') "id={{stepTab}}>Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
   </div>
 </div>
