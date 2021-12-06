@@ -10,8 +10,10 @@ data = cgi.FieldStorage()
 output = {}
 step = data.getvalue('step')
 position = data.getvalue('position')
+angle = data.getvalue('angle')
 output['step'] = step
 output['position'] = position
+output['angle'] = angle
 
 with open('final_project.txt', 'w') as f:
   json.dump(output,f)
@@ -20,7 +22,7 @@ normalTab = ""
 rapidTab = ""
 stepTab = ""
 posTab = ""
-
+currAngle = angle
 
 if step != None:
   normalTab = "defaultMode"
@@ -92,8 +94,12 @@ body {font-family: Arial;}
 </div>
 
 <div id="normal" class="tabcontent">
-	<p>Current Angle: </p>
+	<p>Current Angle: {{ang}} </p>
   <p>Enter Desired Angle: </p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "text" name = "angle">
+    <input type = "submit" value = "adjust">
+  </form>
   <br>
   <p>Current Position: </p>
   <div class="tab">
@@ -107,8 +113,12 @@ body {font-family: Arial;}
 </div>
 
 <div id="step" class="tabcontent">
-  <p>Current Angle: </p>
+  <p>Current Angle: {{ang}} </p>
   <p>Enter Desired Angle: </p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "text" name = "angle">
+    <input type = "submit" value = "adjust">
+  </form>
   <br>
   <p>Current Position: </p>
   <div class="tab">
@@ -123,8 +133,12 @@ body {font-family: Arial;}
 </div>
 
 <div id="position" class="tabcontent">
-  <p>Current Angle: </p>
+  <p>Current Angle: {{ang}} </p>
   <p>Enter Desired Angle: </p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "text" name = "angle">
+    <input type = "submit" value = "adjust">
+  </form>
   <br>
   <p>Current Position: </p>
   <div class="tab">
