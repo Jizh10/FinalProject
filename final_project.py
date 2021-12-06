@@ -13,7 +13,7 @@ position = data.getvalue('position')
 output['step'] = step
 output['position'] = position
 
-with open('final_project.text', 'w') as f:
+with open('final_project.txt', 'w') as f:
   json.dump(output,f)
 
 normalTab = ""
@@ -21,10 +21,10 @@ rapidTab = ""
 stepTab = ""
 posTab = ""
 
-if step != "":
+if step != None:
   normalTab = "defaultMode"
   stepTab = "defaultStep"
-elif position != "":
+elif position != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
 else:
