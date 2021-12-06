@@ -15,11 +15,11 @@ output['step'] = step
 output['position'] = position
 output['angle'] = angle
 
-with open('final_project.txt', 'r') as f:
-  prevData = json.load(f)
+with open('final_project.txt', 'r') as fin:
+  prevData = json.load(fin)
 
-with open('final_project.txt', 'w') as f:
-  json.dump(output,f)
+with open('final_project.txt', 'w') as fout:
+  json.dump(output,fout)
 
 normalTab = ""
 rapidTab = ""
@@ -120,7 +120,7 @@ body {font-family: Arial;}
 </div>
 
 <div id="step" class="tabcontent">
-  <p>Current Angle: {{ang}} </p>
+  <p>Current Angle: </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
@@ -140,7 +140,7 @@ body {font-family: Arial;}
 </div>
 
 <div id="position" class="tabcontent">
-  <p>Current Angle: {{ang}} </p>
+  <p>Current Angle: </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
