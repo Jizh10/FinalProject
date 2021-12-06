@@ -15,6 +15,9 @@ output['step'] = step
 output['position'] = position
 output['angle'] = angle
 
+with open('final_project.txt', 'r') as f:
+  prevData = json.load(f)
+
 with open('final_project.txt', 'w') as f:
   json.dump(output,f)
 
@@ -27,9 +30,13 @@ currAngle = angle
 if step != None:
   normalTab = "defaultMode"
   stepTab = "defaultStep"
+  currAngle = prevData['angle']
 elif position != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
+  currAngle = prevData['angle']
+elif currAngle != None:
+  normalTab = "defaultMode"
 else:
   rapidTab = "defaultMode"
 
@@ -179,6 +186,7 @@ html = html.render(
   normalTab=normalTab,
   rapidTab=rapidTab,
   stepTab=stepTab,
-  posTab=posTab
+  posTab=posTab,
+  ang=currAngle
 )
 print(html)
