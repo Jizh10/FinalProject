@@ -35,10 +35,10 @@ elif position != None:
 elif inputAngle != None:
   normalTab = "defaultMode"
   displayAngle = inputAngle
-  output['displayAngle'] = inputAngle
 else:
   rapidTab = "defaultMode"
 
+output['displayAngle'] = displayAngle
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
