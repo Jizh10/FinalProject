@@ -16,19 +16,20 @@ output['position'] = position
 with open('final_project.txt', 'w') as f:
   json.dump(output,f)
 
-normalTab = "1"
-rapidTab = "2"
-stepTab = "3"
-posTab = "4"
+normalTab = "defaultMode"
+# rapidTab = "2"
+stepTab = "defaultStep"
+# posTab = "4"
 
-if step != None:
-  normalTab = "defaultMode"
-  stepTab = "defaultStep"
-elif position != None:
-  normalTab = "defaultMode"
-  posTab = "defaultStep"
-else:
-  rapidTab = "defaultMode"
+
+# if step != None:
+#   normalTab = "defaultMode"
+#   stepTab = "defaultStep"
+# elif position != None:
+#   normalTab = "defaultMode"
+#   posTab = "defaultStep"
+# else:
+#   rapidTab = "defaultMode"
 
 
 # html page format
@@ -87,7 +88,7 @@ body {font-family: Arial;}
 
 <div class="tab">
   <button class="tablinks" onclick="clickHandle(event, 'normal')" id={{normalTab}}>Normal Mode</button>
-  <button class="tablinks" onclick="clickHandle(event, 'rapid')" id={{rapidTab}}>Rapid Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'rapid')">Rapid Mode</button>
 </div>
 
 <div id="normal" class="tabcontent">
@@ -162,7 +163,6 @@ document.getElementById("defaultStep").click();
 
 html = html.render(
   normalTab=normalTab,
-  rapidTab=rapidTab,
   stepTab=stepTab
 )
 print(html)
