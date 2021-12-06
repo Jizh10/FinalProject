@@ -57,6 +57,10 @@ body {font-family: Arial;}
 <div id="normal" class="tabcontent">
 	<p>Current Angle: </p>
   <p>Enter Desired Angle: </p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "submit" name = "angle">
+    <input type = "submit" value = "adjust">
+  </form>
   <br>
   <p>Current Position: </p>
   <div class="tab">
@@ -75,7 +79,7 @@ body {font-family: Arial;}
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "angle">
     <input type = "submit" value = "adjust">
-  <form>
+  </form>
   <br>
   <p>Current Position: </p>
   <div class="tab">
