@@ -30,9 +30,9 @@ if step != None:
   stepTab = "defaultStep"
   displayAngle = prevData['displayAngle']
   if step == 'left step':
-    inputPos = str(int(prevData['displayPos'] - 1))
+    inputPos = str(int(prevData['displayPos']) - 1)
   else:
-    inputPos = str(int(prevData['displayPos'] + 1))
+    inputPos = str(int(prevData['displayPos']) + 1)
   output['inputPos'] = inputPos
   displayPos = inputPos
 elif inputPos != None:
