@@ -16,10 +16,10 @@ output['position'] = position
 with open('final_project.txt', 'w') as f:
   json.dump(output,f)
 
-normalTab = ""
-rapidTab = ""
-stepTab = ""
-posTab = ""
+normalTab = "1"
+rapidTab = "2"
+stepTab = "3"
+posTab = "4"
 
 if step != None:
   normalTab = "defaultMode"
