@@ -9,10 +9,10 @@ from urllib.parse import urlencode
 data = cgi.FieldStorage()
 output = {}
 step = data.getvalue('step')
-position = data.getvalue('position')
+inputPos = data.getvalue('position')
 inputAngle = data.getvalue('angle')
 output['step'] = step
-output['position'] = position
+output['inputPos'] = inputPos
 output['inputAngle'] = inputAngle
 
 with open('final_project.txt', 'r') as fin:
@@ -23,21 +23,31 @@ rapidTab = ""
 stepTab = ""
 posTab = ""
 displayAngle = ""
+displayPos = ""
 
 if step != None:
   normalTab = "defaultMode"
   stepTab = "defaultStep"
   displayAngle = prevData['displayAngle']
-elif position != None:
+  if step == 'left step':
+    inputPos = str(int(prevData['displayPos'] - 1))
+  else:
+    inputPos = str(int(prevData['displayPos'] + 1))
+  output['inputPos'] = inputPos
+  displayPos = inputPos
+elif inputPos != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
   displayAngle = prevData['displayAngle']
+  displayPos = inputPos
 elif inputAngle != None:
   normalTab = "defaultMode"
   displayAngle = inputAngle
+  displayPos = prevData['displayPos']
 else:
   rapidTab = "defaultMode"
 
+output['displayPos'] = displayPos
 output['displayAngle'] = displayAngle
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
@@ -102,14 +112,14 @@ body {font-family: Arial;}
 </div>
 
 <div id="normal" class="tabcontent">
-	<p>Current Angle: {{ang}} </p>
+	<p>Current Angle (from 0 to 360): {{ang}} </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
   </form>
   <br>
-  <p>Current Position: </p>
+  <p>Current Position (from 0 to 20): {{pos}}</p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step') "id={{stepTab}}>Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')" id={{posTab}}>Adjust By Position</button>
@@ -121,14 +131,14 @@ body {font-family: Arial;}
 </div>
 
 <div id="step" class="tabcontent">
-  <p>Current Angle: {{ang}} </p>
+  <p>Current Angle (from 0 to 360): {{ang}} </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
   </form>
   <br>
-  <p>Current Position: </p>
+  <p>Current Position (from 0 to 20): {{pos}} </p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
@@ -141,14 +151,14 @@ body {font-family: Arial;}
 </div>
 
 <div id="position" class="tabcontent">
-  <p>Current Angle: {{ang}} </p>
+  <p>Current Angle (from 0 to 360): {{ang}} </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
   </form>
   <br>
-  <p>Current Position: </p>
+  <p>Current Position (from 0 to 20): {{pos}}</p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
@@ -188,6 +198,7 @@ html = html.render(
   rapidTab=rapidTab,
   stepTab=stepTab,
   posTab=posTab,
-  ang=displayAngle
+  ang=displayAngle,
+  pos=displayPos
 )
 print(html)
