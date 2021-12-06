@@ -10,10 +10,10 @@ data = cgi.FieldStorage()
 output = {}
 step = data.getvalue('step')
 position = data.getvalue('position')
-angle = data.getvalue('angle')
+inputAngle = data.getvalue('angle')
 output['step'] = step
 output['position'] = position
-output['angle'] = angle
+output['inputAngle'] = inputAngle
 
 with open('final_project.txt', 'r') as fin:
   prevData = json.load(fin)
@@ -22,22 +22,23 @@ normalTab = ""
 rapidTab = ""
 stepTab = ""
 posTab = ""
-currAngle = angle
+displayAngle = ""
 
 if step != None:
   normalTab = "defaultMode"
   stepTab = "defaultStep"
-  currAngle = prevData['angle']
+  displayAngle = prevData['displayAngle']
 elif position != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
-  currAngle = prevData['angle']
-elif currAngle != None:
+  displayAngle = prevData['displayAngle']
+elif inputAngle != None:
   normalTab = "defaultMode"
+  displayAngle = inputAngle
+  output['displayAngle'] = inputAngle
 else:
   rapidTab = "defaultMode"
 
-output['angle'] = prevData['angle']
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
@@ -187,6 +188,6 @@ html = html.render(
   rapidTab=rapidTab,
   stepTab=stepTab,
   posTab=posTab,
-  ang=currAngle
+  ang=displayAngle
 )
 print(html)
