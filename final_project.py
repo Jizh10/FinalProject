@@ -19,7 +19,7 @@ with open('final_project.txt', 'r') as fin:
   prevData = json.load(fin)
 
 normalTab = ""
-rapidTab = ""
+autoTab = ""
 stepTab = ""
 posTab = ""
 displayAngle = ""
@@ -45,7 +45,7 @@ elif inputAngle != None:
   displayAngle = inputAngle
   displayPos = prevData['displayPos']
 else:
-  rapidTab = "defaultMode"
+  autoTab = "defaultMode"
 
 output['displayPos'] = displayPos
 output['displayAngle'] = displayAngle
@@ -108,7 +108,7 @@ body {font-family: Arial;}
 
 <div class="tab">
   <button class="tablinks" onclick="clickHandle(event, 'normal')" id={{normalTab}}>Normal Mode</button>
-  <button class="tablinks" onclick="clickHandle(event, 'rapid')" id={{rapidTab}}>Rapid Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'auto')" id={{autoTab}}>Auto Mode</button>
 </div>
 
 <div id="normal" class="tabcontent">
@@ -126,7 +126,7 @@ body {font-family: Arial;}
   </div>
 </div>
 
-<div id="rapid" class="tabcontent">
+<div id="auto" class="tabcontent">
   <p>No Position Set</p> 
 </div>
 
@@ -195,7 +195,7 @@ document.getElementById("defaultStep").click();
 
 html = html.render(
   normalTab=normalTab,
-  rapidTab=rapidTab,
+  autoTab=autoTab,
   stepTab=stepTab,
   posTab=posTab,
   ang=displayAngle,
