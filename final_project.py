@@ -16,20 +16,20 @@ output['position'] = position
 with open('final_project.txt', 'w') as f:
   json.dump(output,f)
 
-normalTab = "defaultMode"
-# rapidTab = "2"
-stepTab = "defaultStep"
-# posTab = "4"
+normalTab = ""
+rapidTab = ""
+stepTab = ""
+posTab = ""
 
 
-# if step != None:
-#   normalTab = "defaultMode"
-#   stepTab = "defaultStep"
-# elif position != None:
-#   normalTab = "defaultMode"
-#   posTab = "defaultStep"
-# else:
-#   rapidTab = "defaultMode"
+if step != None:
+  normalTab = "defaultMode"
+  stepTab = "defaultStep"
+elif position != None:
+  normalTab = "defaultMode"
+  posTab = "defaultStep"
+else:
+  rapidTab = "defaultMode"
 
 
 # html page format
@@ -88,7 +88,7 @@ body {font-family: Arial;}
 
 <div class="tab">
   <button class="tablinks" onclick="clickHandle(event, 'normal')" id={{normalTab}}>Normal Mode</button>
-  <button class="tablinks" onclick="clickHandle(event, 'rapid')">Rapid Mode</button>
+  <button class="tablinks" onclick="clickHandle(event, 'rapid')" id={{rapidTab}}>Rapid Mode</button>
 </div>
 
 <div id="normal" class="tabcontent">
@@ -98,7 +98,7 @@ body {font-family: Arial;}
   <p>Current Position: </p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step') "id={{stepTab}}>Adjust By Step</button>
-    <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
+    <button class="tablinks" onclick="clickHandle(event, 'position')" id={{posTab}>Adjust By Position</button>
   </div>
 </div>
 
@@ -163,6 +163,8 @@ document.getElementById("defaultStep").click();
 
 html = html.render(
   normalTab=normalTab,
-  stepTab=stepTab
+  rapidTab=rapidTab,
+  stepTab=stepTab,
+  posTab=posTab
 )
 print(html)
