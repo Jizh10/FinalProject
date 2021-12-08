@@ -11,9 +11,11 @@ output = {}
 step = data.getvalue('step')
 inputPos = data.getvalue('position')
 inputAngle = data.getvalue('angle')
+posSet = data.getvalue('set position')
 output['step'] = step
 output['inputPos'] = inputPos
 output['inputAngle'] = inputAngle
+output['posSet'] = posSet
 
 with open('final_project.txt', 'r') as fin:
   prevData = json.load(fin)
@@ -24,6 +26,7 @@ stepTab = ""
 posTab = ""
 displayAngle = ""
 displayPos = ""
+displaySetPos = ""
 
 if step != None:
   normalTab = "defaultMode"
@@ -35,18 +38,23 @@ if step != None:
     inputPos = str(int(prevData['displayPos']) + 1)
   output['inputPos'] = inputPos
   displayPos = inputPos
+  displaySetPos = prevData['displaySetPos']
 elif inputPos != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
   displayAngle = prevData['displayAngle']
   displayPos = inputPos
+  displaySetPos = prevData['displaySetPos']
 elif inputAngle != None:
   normalTab = "defaultMode"
   displayAngle = inputAngle
   displayPos = prevData['displayPos']
+  displaySetPos = prevData['displaySetPos']
 else:
   autoTab = "defaultMode"
+  displaySetPos = prevData['displayPos']
 
+output['displaySetPos'] = displaySetPos
 output['displayPos'] = displayPos
 output['displayAngle'] = displayAngle
 with open('final_project.txt', 'w') as fout:
@@ -127,7 +135,15 @@ body {font-family: Arial;}
 </div>
 
 <div id="auto" class="tabcontent">
-  <p>No Position Set</p> 
+  <p>Position Set: {{setPos}}</p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "submit" name = "set position" value = "set position">
+  </form>
+  <br>
+  <p>No Object Detected</p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "submit" name = "detect" value = "detect">
+  </form> 
 </div>
 
 <div id="step" class="tabcontent">
@@ -199,6 +215,7 @@ html = html.render(
   stepTab=stepTab,
   posTab=posTab,
   ang=displayAngle,
-  pos=displayPos
+  pos=displayPos,
+  setPos=displaySetPos
 )
 print(html)
