@@ -27,6 +27,7 @@ posTab = ""
 displayAngle = ""
 displayPos = ""
 displaySetPos = ""
+displaySetAngle = ""
 
 if step != None:
   normalTab = "defaultMode"
@@ -39,23 +40,32 @@ if step != None:
   output['inputPos'] = inputPos
   displayPos = inputPos
   displaySetPos = prevData['displaySetPos']
+  displaySetAngle = prevData['displaySetAngle']
 elif inputPos != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
   displayAngle = prevData['displayAngle']
   displayPos = inputPos
   displaySetPos = prevData['displaySetPos']
+  displaySetAngle = prevData['displaySetAngle']
 elif inputAngle != None:
   normalTab = "defaultMode"
   displayAngle = inputAngle
   displayPos = prevData['displayPos']
   displaySetPos = prevData['displaySetPos']
+  displaySetAngle = prevData['displaySetAngle']
 else:
   autoTab = "defaultMode"
   displayAngle = prevData['displayAngle']
   displayPos = prevData['displayPos']
-  displaySetPos = prevData['displayPos']
+  if posSet == 'set position':
+    displaySetPos = prevData['displayPos']
+    displaySetAngle = prevData['displayAngle']
+  else:
+    displaySetPos = prevData['displaySetPos']
+    displaySetAngle = prevData['displaySetAngle']
 
+output['displaySetAngle'] = displaySetAngle
 output['displaySetPos'] = displaySetPos
 output['displayPos'] = displayPos
 output['displayAngle'] = displayAngle
@@ -137,7 +147,7 @@ body {font-family: Arial;}
 </div>
 
 <div id="auto" class="tabcontent">
-  <p>Position Set: {{setPos}}</p>
+  <p>Position Set (position, angle): {{setPos}}, {{setAngle}}</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "set position" value = "set position">
   </form>
@@ -218,6 +228,7 @@ html = html.render(
   posTab=posTab,
   ang=displayAngle,
   pos=displayPos,
-  setPos=displaySetPos
+  setPos=displaySetPos,
+  setAngle=displaySetAngle
 )
 print(html)
