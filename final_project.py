@@ -12,10 +12,16 @@ step = data.getvalue('step')
 inputPos = data.getvalue('position')
 inputAngle = data.getvalue('angle')
 posSet = data.getvalue('set position')
+image = data.getValue('image')
+imageIndex = data.getValue('image index')
+lastImageIndex = data.getValue('last image index')
+auto = data.getValue('execute auto mode')
+
 output['step'] = step
 output['inputPos'] = inputPos
 output['inputAngle'] = inputAngle
 output['posSet'] = posSet
+output['auto'] = auto
 
 with open('final_project.txt', 'r') as fin:
   prevData = json.load(fin)
@@ -24,12 +30,19 @@ normalTab = ""
 autoTab = ""
 stepTab = ""
 posTab = ""
-displayAngle = ""
-displayPos = ""
-displaySetPos = ""
-displaySetAngle = ""
+displayAngle = prevData['displayAngle']
+displayPos = prevData['displayPos']
+displaySetPos = prevData['displaySetPos']
+displaySetAngle = prevData['displaySetAngle']
 
-if step != None:
+if image != None:
+  if image == 'prev image':
+    imageIndex = str(int(imageIndex) - 1)
+  elif image == 'next image':
+    imageIndex = str(int(imageIndex) - 1)
+  else:
+    imageIndex = lastImageIndex
+elif step != None:
   normalTab = "defaultMode"
   stepTab = "defaultStep"
   displayAngle = prevData['displayAngle']
@@ -39,28 +52,20 @@ if step != None:
     inputPos = str(int(prevData['displayPos']) + 1)
   output['inputPos'] = inputPos
   displayPos = inputPos
-  displaySetPos = prevData['displaySetPos']
-  displaySetAngle = prevData['displaySetAngle']
 elif inputPos != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
-  displayAngle = prevData['displayAngle']
   displayPos = inputPos
-  displaySetPos = prevData['displaySetPos']
-  displaySetAngle = prevData['displaySetAngle']
 elif inputAngle != None:
   normalTab = "defaultMode"
   displayAngle = inputAngle
-  displayPos = prevData['displayPos']
-  displaySetPos = prevData['displaySetPos']
-  displaySetAngle = prevData['displaySetAngle']
 else:
   autoTab = "defaultMode"
-  displayAngle = prevData['displayAngle']
-  displayPos = prevData['displayPos']
   if posSet == 'set position':
     displaySetPos = prevData['displayPos']
     displaySetAngle = prevData['displayAngle']
+  elif auto == 'execute auto mode':
+    lastImageIndex = str(int(lastImageIndex) + 10)
   else:
     displaySetPos = prevData['displaySetPos']
     displaySetAngle = prevData['displaySetAngle']
@@ -123,6 +128,13 @@ body {font-family: Arial;}
 
 <center>
 <img src="/usr/FinalProject/1.jpg" alt="test image" width="500" height="333">
+<br>
+<form action="/cgi-bin/final_project.py" method="POST">
+  <input type = "submit" name = "image" value = "prev image">
+  <input type = "submit" name = "image" value = "next image">
+  <input type = "submit" name = "image" value = "last image">
+  <input type = "hidden" name = "image index" value = "1">
+</form>
 </center>
 <br>
 
