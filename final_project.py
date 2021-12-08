@@ -122,7 +122,7 @@ body {font-family: Arial;}
 <body>
 
 <center>
-<img src="/usr/FinalProject/image.jpg" alt="test image" width="500" height="333">
+<img src="/usr/FinalProject/1.jpg" alt="test image" width="500" height="333">
 </center>
 <br>
 
