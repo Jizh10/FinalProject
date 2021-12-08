@@ -52,6 +52,8 @@ elif inputAngle != None:
   displaySetPos = prevData['displaySetPos']
 else:
   autoTab = "defaultMode"
+  displayAngle = prevData['displayAngle']
+  displayPos = prevData['displayPos']
   displaySetPos = prevData['displayPos']
 
 output['displaySetPos'] = displaySetPos
