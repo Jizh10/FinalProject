@@ -38,6 +38,7 @@ displaySetPos = prevData['displaySetPos']
 displaySetAngle = prevData['displaySetAngle']
 
 if image != None:
+  normalTab = "defaultMode"
   if image == 'prev image':
     imageIndex = str(int(imageIndex) - 1)
   elif image == 'next image':
@@ -132,7 +133,7 @@ body {font-family: Arial;}
 <body>
 
 <center>
-<img src="/usr/FinalProject/{{imageIndex}}.jpg" alt="test image" width="500" height="333">
+<img src="{{imageIndex}}.jpg" alt="test image" width="500" height="333">
 <br>
 <form action="/cgi-bin/final_project.py" method="POST">
   <input type = "submit" name = "image" value = "prev image">
@@ -152,7 +153,7 @@ body {font-family: Arial;}
 <div id="normal" class="tabcontent">
   <p>Take an Image</p>
   <form action="/cgi-bin/final_project.py" method="POST">
-    <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "image" src = "/usr/FinalProject/camera.jpg" alt = "Submit" width = "100" height = "100">
     <input type = "hidden" name = "take image" value = "1">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
     <input type = "hidden" name = "last image index" value = {{lastImageIndex}}> 
@@ -192,7 +193,7 @@ body {font-family: Arial;}
 <div id="step" class="tabcontent">
   <p>Take an Image</p>
   <form action="/cgi-bin/final_project.py" method="POST">
-    <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "image" src = "/usr/FinalProject/camera.jpg" alt = "Submit" width = "100" height = "100">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
     <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
   </form>
@@ -222,7 +223,7 @@ body {font-family: Arial;}
 <div id="position" class="tabcontent">
   <p>Take an Image</p>
   <form action="/cgi-bin/final_project.py" method="POST">
-    <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "image" src = "/usr/FinalProject/camera.jpg" alt = "Submit" width = "100" height = "100">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
     <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
   </form>
