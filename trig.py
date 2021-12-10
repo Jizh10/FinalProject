@@ -5,5 +5,5 @@ import numpy as np
 class trig():
   def __init__(self):
     
-  def pointcammera(x0,y0,xc):
-      theta0 = 
+  def pointcammera(theta0,d,xc):
+      x0= 
