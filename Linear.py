@@ -20,4 +20,5 @@ class Linear():
     self.dvr.axis1.controller.input_pos = pos/(np.PI*self.pulley_diameter)
   
   def home(self):
+    #you dont need to call this now, itll do it on boot
     self.dvr.axis1.requested_state = AXIS_STATE_HOMING

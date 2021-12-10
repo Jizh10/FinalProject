@@ -16,12 +16,14 @@ image = data.getValue('image')
 imageIndex = data.getValue('image index')
 lastImageIndex = data.getValue('last image index')
 auto = data.getValue('execute auto mode')
+takeImage = data.getValue('take image')
 
 output['step'] = step
 output['inputPos'] = inputPos
 output['inputAngle'] = inputAngle
 output['posSet'] = posSet
 output['auto'] = auto
+output['takeImage'] = takeImage
 
 with open('final_project.txt', 'r') as fin:
   prevData = json.load(fin)
@@ -42,6 +44,9 @@ if image != None:
     imageIndex = str(int(imageIndex) - 1)
   else:
     imageIndex = lastImageIndex
+elif image != None:
+  normalTab = "defaultMode"
+  lastImageIndex = str(int(lastImageIndex) + 1)
 elif step != None:
   normalTab = "defaultMode"
   stepTab = "defaultStep"
@@ -127,13 +132,14 @@ body {font-family: Arial;}
 <body>
 
 <center>
-<img src="/usr/FinalProject/1.jpg" alt="test image" width="500" height="333">
+<img src="/usr/FinalProject/{{imageIndex}}.jpg" alt="test image" width="500" height="333">
 <br>
 <form action="/cgi-bin/final_project.py" method="POST">
   <input type = "submit" name = "image" value = "prev image">
   <input type = "submit" name = "image" value = "next image">
   <input type = "submit" name = "image" value = "last image">
-  <input type = "hidden" name = "image index" value = "1">
+  <input type = "hidden" name = "image index" value = {{imageIndex}}>
+  <input type = "hidden" name = "last image index" value ={{lastImageIndex}}>
 </form>
 </center>
 <br>
@@ -144,11 +150,20 @@ body {font-family: Arial;}
 </div>
 
 <div id="normal" class="tabcontent">
+  <p>Take an Image</p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "hidden" name = "take image" value = "1">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}> 
+  </form>
 	<p>Current Angle (from 0 to 360): {{ang}} </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
   </form>
   <br>
   <p>Current Position (from 0 to 20): {{pos}}</p>
@@ -162,20 +177,32 @@ body {font-family: Arial;}
   <p>Position Set (position, angle): {{setPos}}, {{setAngle}}</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "set position" value = "set position">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}> 
   </form>
   <br>
   <p>No Object Detected</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "detect" value = "detect">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}> 
   </form> 
 </div>
 
 <div id="step" class="tabcontent">
+  <p>Take an Image</p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
+  </form>
   <p>Current Angle (from 0 to 360): {{ang}} </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
   </form>
   <br>
   <p>Current Position (from 0 to 20): {{pos}} </p>
@@ -187,15 +214,25 @@ body {font-family: Arial;}
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "step" value = "left step">
     <input type = "submit" name = "step" value = "right step">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
   </form>
 </div>
 
 <div id="position" class="tabcontent">
+  <p>Take an Image</p>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
+  </form>
   <p>Current Angle (from 0 to 360): {{ang}} </p>
   <p>Enter Desired Angle: </p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
   </form>
   <br>
   <p>Current Position (from 0 to 20): {{pos}}</p>
@@ -207,6 +244,8 @@ body {font-family: Arial;}
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "position">
     <input type = "submit" value = "adjust">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {lastImageIndex}}> 
   </form>
 </div>
 
@@ -241,6 +280,8 @@ html = html.render(
   ang=displayAngle,
   pos=displayPos,
   setPos=displaySetPos,
-  setAngle=displaySetAngle
+  setAngle=displaySetAngle,
+  imageIndex=imageIndex,
+  lastImageIndex=lastImageIndex
 )
 print(html)
