@@ -15,7 +15,7 @@ class rot():
     self.cur_angle = val
 
   def angle(self, angle, speed = 5): #speed in rot/sec
-    steps = abs(angle - self.val)/200
+    steps = abs(angle - self.cur_angle)/200
     for i in range(steps):
             GPIO.output(19,1)
             time.sleep(1/(speed*200))
