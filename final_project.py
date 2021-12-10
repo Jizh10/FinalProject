@@ -40,12 +40,18 @@ displaySetAngle = prevData['displaySetAngle']
 if image != None:
   normalTab = "defaultMode"
   if image == 'prev image':
-    imageIndex = str(int(imageIndex) - 1)
+    if int(imageIndex)-1 < 1:
+      imageIndex = lastImageIndex
+    else:
+      imageIndex = str(int(imageIndex) - 1)
   elif image == 'next image':
-    imageIndex = str(int(imageIndex) - 1)
+    if int(imageIndex+1) > lastImageIndex:
+      imageIndex = str(1)
+    else:
+      imageIndex = str(int(imageIndex) - 1)
   else:
     imageIndex = lastImageIndex
-elif image != None:
+elif takeImage != None:
   normalTab = "defaultMode"
   lastImageIndex = str(int(lastImageIndex) + 1)
 elif step != None:
