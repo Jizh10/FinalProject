@@ -38,7 +38,7 @@ displaySetPos = prevData['displaySetPos']
 displaySetAngle = prevData['displaySetAngle']
 
 if image != None:
-  normalTab = "defaultMode"
+  normalTab = "defaultStep"
   if image == 'prev image':
     imageIndex = str(int(imageIndex) - 1)
   elif image == 'next image':
