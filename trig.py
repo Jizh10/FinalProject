@@ -3,7 +3,7 @@ import rotational.py
 import numpy as np
 
 stepper = rotational.rot(step = 19, dir = 26)
-
+lin = Linear.Linear()
 
 class trig():
   def __init__(self):
