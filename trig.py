@@ -4,4 +4,5 @@ import rotational.py
 class trig():
   def __init__(self):
     
-  def 
+  def pointcammera(x,y):
+      
