@@ -48,7 +48,7 @@ if image != None:
     if int(imageIndex)+1 > int(lastImageIndex):
       imageIndex = str(1)
     else:
-      imageIndex = str(int(imageIndex) - 1)
+      imageIndex = str(int(imageIndex) + 1)
   else:
     imageIndex = lastImageIndex
 elif takeImage != None:
