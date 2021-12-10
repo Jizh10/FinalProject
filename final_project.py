@@ -12,7 +12,7 @@ step = data.getvalue('step')
 inputPos = data.getvalue('position')
 inputAngle = data.getvalue('angle')
 posSet = data.getvalue('set position')
-image = data.getvalue('image action')
+image = data.getvalue('image')
 imageIndex = data.getvalue('image index')
 lastImageIndex = data.getvalue('last image index')
 auto = data.getvalue('execute auto mode')
@@ -38,7 +38,7 @@ displaySetPos = prevData['displaySetPos']
 displaySetAngle = prevData['displaySetAngle']
 
 if image != None:
-  normalTab = "defaultStep"
+  normalTab = "defaultMode"
   if image == 'prev image':
     imageIndex = str(int(imageIndex) - 1)
   elif image == 'next image':
