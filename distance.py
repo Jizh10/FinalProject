@@ -23,4 +23,8 @@ class ultrasonic():
     while GPIO.input(self.echo) == 1:
       t2 = time.time()
     
-    
+    t = t2-t1
+
+    dist = (t*34300)/2
+
+    return dist
