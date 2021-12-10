@@ -2,7 +2,7 @@ import Linear.py
 import rotational.py
 import numpy as np
 
-stepper = rot(step = 19, dir = 26)
+stepper = rotational.rot(step = 19, dir = 26)
 
 
 class trig():
@@ -12,5 +12,5 @@ class trig():
       x0 = d*np.cos(theta0)
       y0 = d*np.sin(theta0)
 
-      theta = np.arctan(yi/(xi-xc))
+      theta = np.arctan(y0/(x0-xc))
       stepper.move(theta)
