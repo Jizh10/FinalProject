@@ -9,4 +9,5 @@ class trig():
       x0 = d*np.cos(theta0)
       y0 = d*np.sin(theta0)
 
-      
+      theta = np.arctan(yi/(xi-xc))
+      ro
