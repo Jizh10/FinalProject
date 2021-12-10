@@ -133,7 +133,7 @@ body {font-family: Arial;}
 <body>
 
 <center>
-<img src="{{imageIndex}}.jpg" alt="test image" width="500" height="333">
+<img src="/usr/FinalProject/{{imageIndex}}.jpg" alt="test image" width="500" height="333">
 <br>
 <form action="/cgi-bin/final_project.py" method="POST">
   <input type = "submit" name = "image" value = "prev image">
