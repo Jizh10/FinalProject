@@ -188,6 +188,12 @@ body {font-family: Arial;}
     <input type = "hidden" name = "last image index" value = {{lastImageIndex}}> 
   </form>
   <br>
+  <form action="/cgi-bin/final_project.py" method="POST">
+    <input type = "submit" name = "execute auto mode" value = "execute auto mode">
+    <input type = "hidden" name = "image index" value = {{imageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
+  </form>
+  <br>
   <p>No Object Detected</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "detect" value = "detect">
