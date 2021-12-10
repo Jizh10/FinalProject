@@ -25,6 +25,6 @@ class ultrasonic():
     
     t = t2-t1
 
-    dist = (t*34300)/2
+    dist = (t*343000)/2 #dist in mm
 
     return dist
