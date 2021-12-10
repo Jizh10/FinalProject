@@ -17,7 +17,7 @@ class Linear():
       
   def move(self, pos, speed = 40): #pos in mm, #speed in rot/s
     self.dvr.axis1.controller.config.vel_limit = speed
-    self.dvr.axis1.controller.input_pos = pos/(np.PI*self.pulley_diameter)
+    self.dvr.axis1.controller.input_pos = pos/(np.pi*self.pulley_diameter)
   
   def home(self):
     #you dont need to call this now, itll do it on boot
