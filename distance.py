@@ -19,4 +19,8 @@ class ultrasonic():
 
     while GPIO.input(self.echo) == 0:
       t1 = time.time()
-    t2 = time
+
+    while GPIO.input(self.echo) == 1:
+      t2 = time.time()
+    
+    

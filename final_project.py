@@ -45,7 +45,7 @@ if image != None:
     else:
       imageIndex = str(int(imageIndex) - 1)
   elif image == 'next image':
-    if int(imageIndex+1) > lastImageIndex:
+    if int(imageIndex)+1 > lastImageIndex:
       imageIndex = str(1)
     else:
       imageIndex = str(int(imageIndex) - 1)
