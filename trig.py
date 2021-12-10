@@ -8,7 +8,7 @@ lin = Linear.Linear()
 class trig():
   def __init__(self):
     pass
-  def pointcammera(theta0,d,xc):
+  def pointcammera(self,theta0,d,xc):
       x0 = d*np.cos(theta0)
       y0 = d*np.sin(theta0)
 
