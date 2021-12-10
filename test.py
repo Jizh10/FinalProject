@@ -9,7 +9,7 @@ trig = trig.trig()
 dists = []
 #average
 for i in range(10):
-  np.append(dists,sens.getDist())
+  dists = np.append(dists,1)#sens.getDist())
   time.sleep(0.1)
 
 dist = np.average(dists)
@@ -17,3 +17,5 @@ angle = 0
 
 for i in range(10):
   trig.pointcammera(angle, dist, i*10)
+  print(angle,dist,i*10)
+  time.sleep(5)
