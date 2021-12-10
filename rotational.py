@@ -10,6 +10,7 @@ class rot():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(self.step, GPIO.OUT, initial=0)
     GPIO.setup(self.dir, GPIO.OUT, initial=0)
+    self.cur_angle = 0
 
   def home(self, val = 0):
     self.cur_angle = val
