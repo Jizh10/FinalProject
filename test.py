@@ -16,6 +16,7 @@ dist = np.average(dists)
 angle = 0
 
 for i in range(10):
-  trig.pointcammera(angle, dist, i*10)
   print(angle,dist,i*10)
+  trig.pointcammera(angle, dist, i*10)
+  
   time.sleep(5)
