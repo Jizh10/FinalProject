@@ -12,11 +12,11 @@ step = data.getvalue('step')
 inputPos = data.getvalue('position')
 inputAngle = data.getvalue('angle')
 posSet = data.getvalue('set position')
-image = data.getValue('image action')
-imageIndex = data.getValue('image index')
-lastImageIndex = data.getValue('last image index')
-auto = data.getValue('execute auto mode')
-takeImage = data.getValue('take image')
+image = data.getvalue('image action')
+imageIndex = data.getvalue('image index')
+lastImageIndex = data.getvalue('last image index')
+auto = data.getvalue('execute auto mode')
+takeImage = data.getvalue('take image')
 
 output['step'] = step
 output['inputPos'] = inputPos
@@ -135,9 +135,9 @@ body {font-family: Arial;}
 <img src="/usr/FinalProject/{{imageIndex}}.jpg" alt="test image" width="500" height="333">
 <br>
 <form action="/cgi-bin/final_project.py" method="POST">
-  <input type = "submit" name = "image action" value = "prev image">
-  <input type = "submit" name = "image action" value = "next image">
-  <input type = "submit" name = "image action" value = "last image">
+  <input type = "submit" name = "image" value = "prev image">
+  <input type = "submit" name = "image" value = "next image">
+  <input type = "submit" name = "image" value = "last image">
   <input type = "hidden" name = "image index" value = {{imageIndex}}>
   <input type = "hidden" name = "last image index" value ={{lastImageIndex}}>
 </form>
