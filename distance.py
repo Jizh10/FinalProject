@@ -13,7 +13,6 @@ class ultrasonic():
 
   def getDist(self):
     GPIO.output(self.trig, 1)
-
     time.sleep(0.00001)
     GPIO.output(self.trig, 0)
 

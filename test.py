@@ -9,7 +9,7 @@ trig = trig.trig()
 dists = []
 #average
 for i in range(10):
-  dists = np.append(dists,1)#sens.getDist())
+  dists = np.append(dists,sens.getDist())
   time.sleep(0.1)
 
 dist = np.average(dists)

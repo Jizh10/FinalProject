@@ -14,5 +14,5 @@ class trig():
 
       theta = np.arctan(y0/(x0-xc))
       stepper.angle(theta)
-      print(theta)
+      
       lin.move(xc)
