@@ -22,6 +22,7 @@ class rot():
       GPIO.output(self.dir,0)
     else:
       GPIO.output(self.dir,1)
+    
     for i in range(1000):#int(steps)):
             GPIO.output(self.step,1)
             time.sleep(1/(speed*200))
