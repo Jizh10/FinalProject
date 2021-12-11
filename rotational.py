@@ -17,6 +17,7 @@ class rot():
 
   def angle(self, angle, speed = 5): #speed in rot/sec
     steps = 200*abs(angle - self.cur_angle)/(2*np.pi)
+    self.cur_angle = angle
     print(steps)
     if angle - self.cur_angle < 0:
       GPIO.output(self.dir,0)
