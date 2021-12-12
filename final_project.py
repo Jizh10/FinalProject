@@ -142,6 +142,7 @@ body {font-family: Arial;}
 <h2>Video Stream</h2>
 <iframe src="http://192.168.0.210:8082" width = "700" height = "600" title="video"></iframe>
 <br>
+<br>
 <h2>Image Gallery</h2>
 <img src="http://192.168.0.210/{{imageIndex}}.jpg" alt="test image" width="500" height="333">
 <br>

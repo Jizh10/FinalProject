@@ -12,10 +12,11 @@ class Linear():
       #while self.dvr.axis1.current_state != AXIS_STATE_IDLE:
       #  time.sleep(0.1)
 
-      #self.dvr.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+      self.dvr.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
 
       
   def move(self, pos, speed = 40): #pos in mm, #speed in rot/s
+    self.dvr.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
     self.dvr.axis1.controller.config.vel_limit = speed
     self.dvr.axis1.controller.input_pos = -1*pos/(np.pi*self.pulley_diameter)
   
