@@ -12,7 +12,7 @@ class trig():
       x0 = d*np.sin(theta0)
       y0 = d*np.cos(theta0)
 
-      theta = np.arctan(y0/(x0-xc)) -90
+      theta = np.arctan(y0/(x0-xc))
       print("theta {:f}".format(theta))
       print("xc {:f}".format(xc))
       print("y0 {:f}".format(y0))

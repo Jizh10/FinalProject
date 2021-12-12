@@ -11,7 +11,7 @@ try:
     with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
       data = json.load(f)
 
-      linearMotion.move(data[''])
+      linearMotion.move(20*int(data['displayPos']))
       # print('data loaded')
       # if data['takeImage'] == '1':
       #   print('command received')

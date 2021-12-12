@@ -16,7 +16,7 @@ class rot():
     self.cur_angle = val
 
   def angle(self, angle, speed = 5): #speed in rot/sec
-    steps = (25.25/13.4)*200*abs(angle - self.cur_angle)/(2*np.pi)
+    steps = (25.25/13.4)*200*abs(angle - self.cur_angle)/(360)
     #(25.25/13.4) term is gear reduction
     print(steps)
     

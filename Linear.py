@@ -19,7 +19,9 @@ class Linear():
     self.dvr.clear_errors()
     #self.dvr.axis1.requested_state = #8#AXIS_STATE_CLOSED_LOOP_CONTROL
     self.dvr.axis1.controller.config.vel_limit = speed
+    self.curr_pos = pos
     self.dvr.axis1.controller.input_pos = -1*pos/(np.pi*self.pulley_diameter)
+    
   
   def home(self):
     #you dont need to call this now, itll do it on boot

@@ -1,11 +1,11 @@
-import trig
 import distance
 import time
 import numpy as np
 import rotational
+import Linear
 
 sens = distance.ultrasonic(echo = 22, trig = 27)
-trig = trig.trig()
+lin = Linear.Linear()
 
 stepper = rotational.rot(step = 19, dir = 26)
 
@@ -19,10 +19,18 @@ dist = np.average(dists)
 
 print("dist =")
 print(dist)
-angle = 0
+theta0 = 0.001
+x0 = dist*np.sin(theta0)
+y0 = dist*np.cos(theta0)
 
 for i in range(1000):
+  xc = i
 
-  trig.pointcammera(angle, dist, i)
+  theta = np.arctan((x0-xc)/y0)
+  print("theta {:f}".format(theta))
+  print("xc {:f}".format(xc))
+  print("y0 {:f}".format(y0))
+  stepper.angle(theta)
+  lin.move(xc)
   
   time.sleep(0.01)

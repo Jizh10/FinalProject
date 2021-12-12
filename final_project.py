@@ -186,7 +186,7 @@ body {font-family: Arial;}
     <input type = "hidden" name = "init" value = "0">
   </form>
   <br>
-  <p>Current Position (from 0 to 20): {{pos}}</p>
+  <p>Current Position (from 0 to 50): {{pos}}</p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step') "id={{stepTab}}>Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')" id={{posTab}}>Adjust By Position</button>
@@ -237,7 +237,7 @@ body {font-family: Arial;}
     <input type = "hidden" name = "init" value = "0"> 
   </form>
   <br>
-  <p>Current Position (from 0 to 20): {{pos}} </p>
+  <p>Current Position (from 0 to 50): {{pos}} </p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
@@ -271,7 +271,7 @@ body {font-family: Arial;}
     <input type = "hidden" name = "init" value = "0"> 
   </form>
   <br>
-  <p>Current Position (from 0 to 20): {{pos}}</p>
+  <p>Current Position (from 0 to 50): {{pos}}</p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
