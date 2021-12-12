@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-import numpy as np
+#import numpy as np
 #step = 19, dir = 26
 
 class rot():
