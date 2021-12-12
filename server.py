@@ -166,10 +166,11 @@ def main():
             while True:
               with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
                 data = json.load(f)
-                print('data loaded')
+                #print('data loaded')
                 if data['takeImage'] == '1':
+                  imageIndex += 1
                   print('command received')
-                  camera.capture('/var/www/html/.jpg', use_video_port=True)
+                  camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
                   print('image taken')
                   data['takeImage'] = None
                   f.seek(0)
