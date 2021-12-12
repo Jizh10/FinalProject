@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import json
+from Linear import Linear
+
 import sys
 import io
 import os
@@ -167,6 +169,7 @@ def main():
               with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
                 data = json.load(f)
                 #print('data loaded')
+                
                 if data['takeImage'] == '1':
                   imageIndex += 1
                   print('command received')
