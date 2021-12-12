@@ -1,10 +1,12 @@
 from picamera import PiCamera
 from Linear import Linear
+from rotational import rot
 import json
 import time
 
 camera = PiCamera()
 linearMotion = Linear()
+rotation = rot()
 
 try:
   while True:
@@ -12,6 +14,7 @@ try:
       data = json.load(f)
 
       linearMotion.move(20*int(data['displayPos']))
+      
       # print('data loaded')
       # if data['takeImage'] == '1':
       #   print('command received')

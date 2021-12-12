@@ -27,7 +27,7 @@ class rot():
       GPIO.output(self.dir,1)
     self.cur_angle = angle
     
-    if steps < 1:
+    if max(int(steps),int(self.partialsteps)) < 1:
       self.partialsteps += steps
     else: self.partialsteps = 0
 
