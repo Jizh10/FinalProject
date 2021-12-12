@@ -13,7 +13,7 @@ try:
         print('command received')
         camera.capture('/var/www/html/1.jpg')
         print('image taken')
-        data['takeImage'] == None
+        data['takeImage'] = None
         json.dump(data,f)
       time.sleep(0.1)
 except KeyboardInterrupt:
