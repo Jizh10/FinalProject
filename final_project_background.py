@@ -6,14 +6,14 @@ camera = PiCamera()
 
 try:
   while True:
-    with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
+    with open("/usr/lib/cgi-bin/final_project.txt",'w+') as f:
       data = json.load(f)
       print('data loaded')
       if data['takeImage'] == '1':
         print('command received')
         camera.capture('/var/www/html/1.jpg')
         print('image taken')
-        data['takeImage'] = '0'
+        data['takeImage'] = None
         json.dump(data,f)
       time.sleep(0.1)
 except KeyboardInterrupt:
