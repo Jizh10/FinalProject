@@ -7,6 +7,7 @@ import rotational
 sens = distance.ultrasonic(echo = 22, trig = 27)
 trig = trig.trig()
 
+stepper = rotational.rot(step = 19, dir = 26)
 
 dists = []
 #average
@@ -19,6 +20,8 @@ angle = 0
 
 for i in range(10):
   print(angle,dist,i*10)
+  stepper.angle(0+i)
+
   trig.pointcammera(angle, dist, i*10)
   
   time.sleep(5)
