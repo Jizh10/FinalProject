@@ -6,7 +6,7 @@ import time
 
 camera = PiCamera()
 linearMotion = Linear()
-rotation = rot()
+rotation = rot(19,26)
 
 try:
   while True:
