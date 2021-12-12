@@ -3,7 +3,7 @@ import time
 import numpy as np
 import rotational
 import Linear
-import RPiGPIO as GPIO
+import RPi.GPIO as GPIO
 
 sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
