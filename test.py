@@ -19,7 +19,7 @@ dist = np.average(dists)
 
 print("dist =")
 print(dist)
-angle = 90
+angle = 0
 
 for i in range(1000):
 
