@@ -13,7 +13,7 @@ class trig():
       y0 = d*np.cos(theta0)
 
       theta = np.arctan(y0/(x0-xc))
-      print(y0/(x0-xc))
+      
       stepper.angle(theta)
       
       lin.move(xc)

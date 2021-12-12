@@ -155,22 +155,6 @@ def main():
         print('Starting recording')
         camera.start_recording(output, 'yuv')
         try:
-          while True:
-            with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
-              data = json.load(f)
-              print('data loaded')
-            if data['takeImage'] == '1':
-        print('command received')
-        camera.capture('/var/www/html/image.jpg')
-        print('image taken')
-        data['takeImage'] = None
-        f.seek(0)
-        json.dump(data,f)
-      time.sleep(0.1)
-except KeyboardInterrupt:
-  print('\nExiting')
-
-        try:
             print('Starting websockets thread')
             websocket_thread.start()
             print('Starting HTTP server thread')
@@ -178,6 +162,16 @@ except KeyboardInterrupt:
             print('Starting broadcast thread')
             broadcast_thread.start()
             while True:
+              with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
+                data = json.load(f)
+                print('data loaded')
+                if data['takeImage'] == '1':
+                  print('command received')
+                  camera.capture('/var/www/html/image.jpg')
+                  print('image taken')
+                  data['takeImage'] = None
+                  f.seek(0)
+                  json.dump(data,f)
                 camera.wait_recording(1)
         except KeyboardInterrupt:
             pass

@@ -23,4 +23,4 @@ for i in range(1000):
 
   trig.pointcammera(angle, dist, i)
   
-  time.sleep(5)
+  time.sleep(0.1)
