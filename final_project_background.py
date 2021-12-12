@@ -11,7 +11,7 @@ try:
       print('data loaded')
       if data['takeImage'] == '1':
         print('command received')
-        camera.capture('/www/var/html/image.jpg')
+        camera.capture('/var/www/html/image.jpg')
         print('image taken')
         data['takeImage'] == None
         json.dump(data,f)
