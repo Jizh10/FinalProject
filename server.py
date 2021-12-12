@@ -131,6 +131,7 @@ class BroadcastThread(Thread):
 
 
 def main():
+    imageIndex = 1
     print('Initializing camera')
     with picamera.PiCamera() as camera:
         camera.resolution = (WIDTH, HEIGHT)
@@ -168,7 +169,7 @@ def main():
                 print('data loaded')
                 if data['takeImage'] == '1':
                   print('command received')
-                  camera.capture('/var/www/html/image.jpg', use_video_port=True)
+                  camera.capture('/var/www/html/.jpg', use_video_port=True)
                   print('image taken')
                   data['takeImage'] = None
                   f.seek(0)
