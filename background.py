@@ -14,7 +14,7 @@ try:
       data = json.load(f)
 
       linearMotion.move(20*int(data['displayPos']))
-      rot.angle(int(data['displayAngle']))
+      rotation.angle(int(data['displayAngle']))
       # print('data loaded')
       # if data['takeImage'] == '1':
       #   print('command received')
