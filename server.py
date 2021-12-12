@@ -2,6 +2,9 @@
 
 import json
 from Linear import Linear
+from rotational import rot
+import numpy as np
+
 
 import sys
 import io
@@ -135,6 +138,7 @@ class BroadcastThread(Thread):
 def main():
     imageIndex = 1
     linearMotion = Linear()
+    rotation = rot(19,26)
     print('Initializing camera')
     with picamera.PiCamera() as camera:
         camera.resolution = (WIDTH, HEIGHT)
@@ -171,7 +175,7 @@ def main():
                 data = json.load(f)
                 #print('data loaded')
                 linearMotion.move(20*int(data['displayPos']))
-
+                rotation.angle(float(data['displayAngle'])/180.0*np.pi)
                 if data['takeImage'] == '1':
                   imageIndex += 1
                   print('command received')
