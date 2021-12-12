@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import json
 import sys
 import io
 import os
@@ -167,7 +168,7 @@ def main():
                 print('data loaded')
                 if data['takeImage'] == '1':
                   print('command received')
-                  camera.capture('/var/www/html/image.jpg')
+                  camera.capture('/var/www/html/image.jpg', use_video_port=True)
                   print('image taken')
                   data['takeImage'] = None
                   f.seek(0)
