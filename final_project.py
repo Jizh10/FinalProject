@@ -222,6 +222,7 @@ body {font-family: Arial;}
   <p>Take an Image</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "image" src = "http://192.168.0.210/camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "hidden" name = "take image" value = "1">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
     <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
@@ -255,6 +256,7 @@ body {font-family: Arial;}
   <p>Take an Image</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "image" src = "http://192.168.0.210/camera.jpg" alt = "Submit" width = "100" height = "100">
+    <input type = "hidden" name = "take image" value = "1">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
     <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
