@@ -20,7 +20,6 @@ angle = 0
 
 for i in range(10):
   print(angle,dist,i*10)
-  stepper.angle(0+i)
 
   trig.pointcammera(angle, dist, i*10)
   

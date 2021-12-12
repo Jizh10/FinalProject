@@ -16,7 +16,6 @@ try:
         data['takeImage'] = None
         f.seek(0)
         json.dump(data,f)
-        f.truncate()
       time.sleep(0.1)
 except KeyboardInterrupt:
   print('\nExiting')
