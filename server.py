@@ -134,6 +134,7 @@ class BroadcastThread(Thread):
 
 def main():
     imageIndex = 1
+    linearMotion = Linear()
     print('Initializing camera')
     with picamera.PiCamera() as camera:
         camera.resolution = (WIDTH, HEIGHT)
@@ -169,7 +170,8 @@ def main():
               with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
                 data = json.load(f)
                 #print('data loaded')
-                
+                linearMotion.move(20*int(data['displayPos']))
+
                 if data['takeImage'] == '1':
                   imageIndex += 1
                   print('command received')

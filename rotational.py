@@ -11,7 +11,8 @@ class rot():
     GPIO.setup(self.step, GPIO.OUT, initial=0)
     GPIO.setup(self.dir, GPIO.OUT, initial=0)
     self.cur_angle = 0
-
+    self.partialsteps = 0
+    
   def home(self, val = 0):
     self.cur_angle = val
 
@@ -26,7 +27,11 @@ class rot():
       GPIO.output(self.dir,1)
     self.cur_angle = angle
     
-    for i in range(int(steps)):
+    if steps < 1:
+      self.partialsteps += steps
+    else: self.partialsteps = 0
+
+    for i in range(max(int(steps),int(self.partialsteps))):
             GPIO.output(self.step,1)
             time.sleep(1/(speed*200))
             GPIO.output(self.step,0)
