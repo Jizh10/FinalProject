@@ -222,7 +222,7 @@ def main():
                   json.dump(data,f)
                 
                 # check if the user wants to set a position
-                if data['posSet'] == 'set postion':
+                if data['posSet'] == 'set position':
                   # set the position
                   setPos = 20*int(data['displayPos'])
                   setAngle = float(data['displayAngle'])/180.0*np.pi
