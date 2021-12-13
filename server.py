@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+# the base of the code came from https://github.com/waveform80/pistreaming/ we utilized the video streaming code and embedded our control code into it so that we can use the pi camera to simutaneously stream video, take images, and control the movement. The control code is embedded into the main method.
 import json
 from Linear import Linear
 from rotational import rot
@@ -179,58 +180,95 @@ def main():
             http_thread.start()
             print('Starting broadcast thread')
             broadcast_thread.start()
+            ####################################
+            # this section is the code that determines the state of the camera
             while True:
+              # open the file that has the json data to read and write
               with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
+                # load the data
                 data = json.load(f)
                 #print('data loaded')
+
+                # adjust the linear postion
                 linearMotion.move(20*int(data['displayPos']))
+                # adjust the angular position
                 rotation.angle(float(data['displayAngle'])/180.0*np.pi)
                 
+                # check if the user wants to detect an object
                 if data['detect'] == 'detect':
+                  # use the ultrasonic sense to get the distance
                   distance = distSensor.getDist()
                   setDist = distance
+                  # set the value of key 'detect' to it
                   data['detect'] = str(distance)
+                  # go to the beginning of the document
                   f.seek(0)
+                  # dump the data
                   json.dump(data,f)
 
+                # check if the user wants to take an image
                 if data['takeImage'] == '1':
+                  # increase image index
                   imageIndex += 1
                   print('command received')
+                  # capture the image
                   camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
                   print('image taken')
+                  # reset take image so it only takes one image
                   data['takeImage'] = None
+                  # go to the beginning of the document
                   f.seek(0)
+                  # dump the data
                   json.dump(data,f)
                 
+                # check if the user wants to set a position
                 if data['posSet'] == 'set postion':
+                  # set the position
                   setPos = 20*int(data['displayPos'])
                   setAngle = float(data['displayAngle'])/180.0*np.pi
 
+                # check if the user wants to use the auto mode
                 if data['auto'] == 'auto':
+                  # reset the auto
                   data['auto'] = "not auto"
+                  # go to the beginning of the document
                   f.seek(0)
+                  # dump the data
                   json.dump(data,f)
+
+                  # set the x, y position of the object
                   x0 = setPos + setDist*np.sin(setAngle)
                   y0 = setDist*np.cos(setAngle)
+                  # go to 0 point
                   linearMotion.move(0)
+                  # set the angle to 0
+                  rotation.angle(0)
 
+                  # for each position from 0 to 900mm
                   for i in range(0, 900):
+                    # set the current position
                     xc = i
+                    # calculate the angle
                     theta = np.arctan((x0-xc)/y0)
+                    # go to the angle
                     rotation.angle(theta+0.001, speed=20)
+                    # go to the position
                     linearMotion.move(xc)
                     sleep(.1/1000)
+                    # if its an increment of 90mm take an image (total of 10)
                     if i % 90 == 0:
                       imageIndex += 1
                       print("image taken")
                       camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
+                    # scale the brightness based on the photoresistor reading
                     brightness = photoRes.read(0)
                     camera.brightness = int(brightness)  
 
+                  # go back to the original position and angle
                   linearMotion.move(setPos)
                   rotation.angle(setAngle)
                   
-                
+                # adjust the brightness based on the photoresistor reading
                 brightness = photoRes.read(0)
                 camera.brightness = int(brightness)
                 camera.wait_recording(1)

@@ -1,5 +1,6 @@
 #!/usr/bin/python37all
 from jinja2 import Template
+# note jinja2 is used such that the css {} does not interfere with the print format
 import cgi
 import json
 import time
@@ -19,7 +20,7 @@ takeImage = data.getvalue('take image')
 init = data.getvalue('init')
 detect = data.getvalue('detect')
 
-
+# immediate inputs that can be outputted 
 output['step'] = step
 output['inputPos'] = inputPos
 output['inputAngle'] = inputAngle
@@ -28,12 +29,14 @@ output['auto'] = auto
 output['takeImage'] = takeImage
 output['detect'] = detect
 
+# check if the html page is just initialized to determine how the previous relevant data is obtained
 if init == '1':
   prevData = {'displayAngle':"0", 'displayPos':"0", 'displaySetPos':"0", 'displaySetAngle':"0"}
 else:
   with open('final_project.txt', 'r') as fin:
     prevData = json.load(fin)
 
+# initialize the tab to stay on and values being displayed
 normalTab = ""
 autoTab = ""
 stepTab = ""
@@ -44,23 +47,29 @@ displayPos = prevData['displayPos']
 displaySetPos = prevData['displaySetPos']
 displaySetAngle = prevData['displaySetAngle']
 
+# if the user is trying to browse the gallery
 if image != None:
   normalTab = "defaultMode"
+  # for previous image
   if image == 'prev image':
     if int(imageIndex)-1 < 1:
       imageIndex = lastImageIndex
     else:
       imageIndex = str(int(imageIndex) - 1)
+  # for next image
   elif image == 'next image':
     if int(imageIndex)+1 > int(lastImageIndex):
       imageIndex = str(1)
     else:
       imageIndex = str(int(imageIndex) + 1)
+  # for last image
   else:
     imageIndex = lastImageIndex
+# if the user is trying to take an image
 elif takeImage != None:
   normalTab = "defaultMode"
   lastImageIndex = str(int(lastImageIndex) + 1)
+# if the user is trying to step left or right with the camera
 elif step != None:
   normalTab = "defaultMode"
   stepTab = "defaultStep"
@@ -71,13 +80,16 @@ elif step != None:
     inputPos = str(int(prevData['displayPos']) + 1)
   output['inputPos'] = inputPos
   displayPos = inputPos
+# if the user is adjusting postion through the position adjustment button
 elif inputPos != None:
   normalTab = "defaultMode"
   posTab = "defaultStep"
   displayPos = inputPos
+# if the user is adjusting angle through the angle adjustment button
 elif inputAngle != None:
   normalTab = "defaultMode"
   displayAngle = inputAngle
+# if the user is operating on the auto tab
 else:
   autoTab = "defaultMode"
   if posSet == 'set position':
@@ -89,14 +101,17 @@ else:
     displaySetPos = prevData['displaySetPos']
     displaySetAngle = prevData['displaySetAngle']
 
+# determine what the display angle and position should be
 output['displaySetAngle'] = displaySetAngle
 output['displaySetPos'] = displaySetPos
 output['displayPos'] = displayPos
 output['displayAngle'] = displayAngle
 
+# dump the parsed data
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
+# if the user is trying to detect the distance, wait until the background python code measures the distance then take it from the json file and set the display of distance to that
 while detect == 'detect':
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)

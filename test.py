@@ -21,7 +21,8 @@ dist = np.average(dists)
 print("dist =")
 print(dist)
 theta0 = 0.001
-x0 = dist*np.sin(theta0)
+lin.move(500)
+x0 = 500+ dist*np.sin(theta0)
 y0 = dist*np.cos(theta0)
 try:
   for i in range(1000):

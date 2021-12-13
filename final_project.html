@@ -45,14 +45,17 @@ body {font-family: Arial;}
 <body>
 
 <center>
+<!-- create the video streaming frame -->
 <h2>Video Stream</h2>
 <iframe src="http://192.168.0.210:8082" width = "700" height = "600" title="video"></iframe>
 <br>
 
+<!-- create the image gallery frame -->
 <h2>Image Gallery</h2>
 <img src="image.jpg" alt="test image" width="500" height="333">
 <br>
 <br>
+<!-- buttons to index through the images -->
 <form action="/cgi-bin/final_project.py" method="POST">
   <input type = "submit" name = "image" value = "prev image">
   <input type = "submit" name = "image" value = "next image">
@@ -64,13 +67,15 @@ body {font-family: Arial;}
 </center>
 
 <br>
-
+<!-- tab class for tab display -->
 <div class="tab">
   <button class="tablinks" onclick="clickHandle(event, 'normal')" id="defaultMode">Normal Mode</button>
   <button class="tablinks" onclick="clickHandle(event, 'auto')">Auto Mode</button>
 </div>
 
+<!-- define the contents in the 'normal' tab -->
 <div id="normal" class="tabcontent">
+  <!-- button to take an image -->
   <p>Take an Image</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
@@ -81,6 +86,7 @@ body {font-family: Arial;}
   </form>
 	<p>Current Angle (from 0 to 360): 0</p>
   <p>Enter Desired Angle: </p>
+  <!-- form to change the angle of the camera -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
@@ -90,14 +96,17 @@ body {font-family: Arial;}
   </form>
   <br>
   <p>Current Position (from 0 to 45): 0</p>
+  <!-- tab class to link to another set of tabs -->
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step')" id="defaultStep">Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
   </div>
 </div>
 
+<!-- define the contents in the 'auto' tab -->
 <div id="auto" class="tabcontent">
   <p>Position Set (position, angle): 0,0</p>
+  <!-- button to set a position for auto mode -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "set position" value = "set position">
     <input type = "hidden" name = "image index" value = "1">
@@ -105,6 +114,7 @@ body {font-family: Arial;}
     <input type = "hidden" name = "init" value = "1">
   </form>
   <br>
+  <!-- button for auto mode -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "auto" value = "auto">
     <input type = "hidden" name = "image index" value = "1">
@@ -112,6 +122,7 @@ body {font-family: Arial;}
     <input type = "hidden" name = "init" value = "1">
   </form>
   <br>
+  <!-- button for distance detection -->
   <p>No Object Detected</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "detect" value = "detect">
@@ -121,7 +132,9 @@ body {font-family: Arial;}
   </form>
 </div>
 
+<!-- define contents in the step tab -->
 <div id="step" class="tabcontent">
+  <!-- button to take an image-->
   <p>Take an Image</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
@@ -132,6 +145,7 @@ body {font-family: Arial;}
   </form>
   <p>Current Angle (from 0 to 360): 0 </p>
   <p>Enter Desired Angle: </p>
+  <!-- form to change the angle -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
@@ -141,11 +155,13 @@ body {font-family: Arial;}
   </form>
   <br>
   <p>Current Position: (from 0 to 45): 0</p>
+  <!-- tablink to change the tabs -->
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
   </div>
   <br>
+  <!-- button to step the motor left and right -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "step" value = "left step">
     <input type = "submit" name = "step" value = "right step">
@@ -157,6 +173,7 @@ body {font-family: Arial;}
 
 <div id="position" class="tabcontent">
   <p>Take an Image</p>
+  <!-- button to take an image -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "image" src = "camera.jpg" alt = "Submit" width = "100" height = "100">
     <input type = "hidden" name = "take image" value = "1">
@@ -166,6 +183,7 @@ body {font-family: Arial;}
   </form>
   <p>Current Angle (from 0 to 360): 0 </p>
   <p>Enter Desired Angle: </p>
+  <!-- form to change the angle -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
@@ -174,12 +192,14 @@ body {font-family: Arial;}
     <input type = "hidden" name = "init" value = "1">
   </form>
   <br>
+  <!-- tablinks to change the tab-->
   <p>Current Position: (from 0 to 45): 0</p>
   <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'step')">Adjust By Step</button>
     <button class="tablinks" onclick="clickHandle(event, 'position')">Adjust By Position</button>
   </div>
   <br>
+  <!-- button for distance detection -->
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "text" name = "position">
     <input type = "submit" value = "adjust">
@@ -189,6 +209,7 @@ body {font-family: Arial;}
   </form>
 </div>
 
+<!-- javascript to run the tab switching -->
 <script>
 function clickHandle(event, mode) {
   var i, tabcontent, tablinks;
@@ -204,6 +225,7 @@ function clickHandle(event, mode) {
   event.currentTarget.className += " active";
 }
 
+/* default form tabs, Normal and Step*/
 document.getElementById("defaultMode").click();
 document.getElementById("defaultStep").click();
 </script>
