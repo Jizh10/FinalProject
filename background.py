@@ -30,7 +30,6 @@ try:
         #print('image taken')
         data['takeImage'] = None
       f.seek(0)
-      f.truncate()
       json.dump(data,f)
       time.sleep(0.1)
 except KeyboardInterrupt:
