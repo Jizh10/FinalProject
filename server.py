@@ -3,6 +3,7 @@
 import json
 from Linear import Linear
 from rotational import rot
+from distance import ultrasonic
 import numpy as np
 
 
@@ -139,8 +140,11 @@ def main():
     imageIndex = 1
     linearMotion = Linear()
     rotation = rot(19,26)
+    ultrasonic = ultrasonic(22,27)
+    currDist = 0
     print('Initializing camera')
     with picamera.PiCamera() as camera:
+        camera.rotation = 180
         camera.resolution = (WIDTH, HEIGHT)
         camera.framerate = FRAMERATE
         camera.vflip = VFLIP # flips image rightside up, as needed
@@ -176,6 +180,12 @@ def main():
                 #print('data loaded')
                 linearMotion.move(20*int(data['displayPos']))
                 rotation.angle(float(data['displayAngle'])/180.0*np.pi)
+                
+                if data['detect'] == 'detect':
+                  distance = ultrasonic.getDist()
+                  currDist = distance
+                  data['detect'] = str(int(distance))
+
                 if data['takeImage'] == '1':
                   imageIndex += 1
                   print('command received')
