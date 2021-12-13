@@ -206,6 +206,9 @@ def main():
                   setAngle = float(data['displayAngle'])/180.0*np.pi
 
                 if data['auto'] == 'execute auto mode':
+                  data['auto'] = None
+                  f.seek(0)
+                  json.dump(data,f)
                   x0 = setPos + setDist*np.sin(setAngle)
                   y0 = setDist*np.cos(setAngle)
                   linearMotion.move(0)
@@ -218,15 +221,14 @@ def main():
                     sleep(.1/1000)
                     if i % 90 == 0:
                       imageIndex += 1
+                      print("image taken")
                       camera.capture('/var/www/html%s.jpg' % imageIndex, use_video_port=True)
                     brightness = photoRes.read(0)
                     camera.brightness = int(brightness)  
 
                   linearMotion.move(setPos)
 
-                  data['auto'] = None
-                  f.seek(0)
-                  json.dump(data,f)
+                  
                 
                 brightness = photoRes.read(0)
                 camera.brightness = int(brightness)
