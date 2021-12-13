@@ -19,7 +19,7 @@ class rot():
   def angle(self, angle, speed = 5): #speed in rot/sec
     
     #calculate steps from angle in radians
-    steps = (25.25/13.4)*200*abs(angle - self.cur_angle)/(2*np.pi)
+    steps = (25.25/13.4)*200*16*abs(angle - self.cur_angle)/(2*np.pi)
     #(25.25/13.4) term is gear reduction
     #print("steps {:f}".format(max(int(steps),int(self.partialsteps))))
 

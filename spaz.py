@@ -18,7 +18,7 @@ try:
       xc = i
       print("xc {:f}".format(xc))
       lin.move(xc)
-      time.sleep(.1/1000)
+      time.sleep(1/1000)
 except KeyboardInterrupt:
   stepper.angle(0)
   GPIO.cleanup()
