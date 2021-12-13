@@ -4,15 +4,16 @@ import numpy as np
 import rotational
 import Linear
 import RPi.GPIO as GPIO
-speed = input()
 GPIO.setmode(GPIO.BCM)
 
+stepper = rotational.rot(step = 19, dir = 26)
+speed = input()
 sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
 
 lin.move(0)
 
-stepper = rotational.rot(step = 19, dir = 26)
+
 
 dists = []
 #average
