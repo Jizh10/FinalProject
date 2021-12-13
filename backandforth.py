@@ -11,7 +11,7 @@ sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
 
 lin.move(0)
-
+time.sleep(2)
 
 dists = []
 #average
