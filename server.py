@@ -256,7 +256,7 @@ def main():
                     # calculate the angle
                     theta = np.arctan((x0-xc)/y0)
                     # go to the angle
-                    if i % 4 == 0:
+                    if i % 8 == 0:
                       rotation.angle(theta, speed=20*16*5)
 
                     sleep(5/1000)
