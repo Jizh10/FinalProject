@@ -10,6 +10,7 @@ camera = PiCamera()
 linearMotion = Linear()
 rotation = rot(19,26)
 ultrasonic = ultrasonic(22,27)
+imageIndex = 1
 
 try:
   while True:
@@ -18,17 +19,17 @@ try:
 
       linearMotion.move(20*int(data['displayPos']))
       rotation.angle(float(data['displayAngle'])/180.0*np.pi)
-      if 
+      if data['detect'] == 'detect':
         distance = ultrasonic.getDist()
-      
+        data['detect'] = str(distance)
       # print('data loaded')
-      # if data['takeImage'] == '1':
+      if data['takeImage'] == '1':
       #   print('command received')
-      #   camera.capture('/var/www/html/image.jpg')
-      #   print('image taken')
-      #   data['takeImage'] = None
-      #   f.seek(0)
-      #   json.dump(data,f)
+        camera.capture('/var/www/html/{imageIndex}.jpg')
+        print('image taken')
+        data['takeImage'] = None
+      f.seek(0)
+      json.dump(data,f)
       time.sleep(0.1)
 except KeyboardInterrupt:
   print('\nExiting')
