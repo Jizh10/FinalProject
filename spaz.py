@@ -41,3 +41,6 @@ try:
 except:
   stepper.angle(0)
   GPIO.cleanup()
+
+stepper.angle(0)
+GPIO.cleanup()
