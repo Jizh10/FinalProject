@@ -260,7 +260,7 @@ def main():
                     # go to the angle
                     rotation.angle(theta+0.00001, speed=20*16)
                     print(theta)
-                    time.sleep(.1/1000)
+                    sleep(.1/1000)
                     # if its an increment of 90mm take an image (total of 10)
                     if i % 90 == 0:
                       imageIndex += 1
