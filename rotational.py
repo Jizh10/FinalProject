@@ -34,14 +34,13 @@ class rot():
     
     #a neat hack
     #the code doesnt work if the angle val is small enough that less than one step is generated, so this code sums all of the unused step bits and holds them until a full step is reached
-    if max(int(steps),int(self.partialsteps)) < 8:
+    if max(int(steps),int(self.partialsteps)) < 1:
       self.partialsteps += steps
     else: self.partialsteps = 0
 
-    if max(int(steps),int(self.partialsteps)) >= 8:
       #on and off on the step input for every step
-      for i in range(max(int(steps),int(self.partialsteps))):
-        GPIO.output(self.step,1)
-        time.sleep(1/(speed*200))
-        GPIO.output(self.step,0)
-        time.sleep(1/(speed*200))
+    for i in range(max(int(steps),int(self.partialsteps))):
+      GPIO.output(self.step,1)
+      time.sleep(1/(speed*200))
+      GPIO.output(self.step,0)
+      time.sleep(1/(speed*200))
