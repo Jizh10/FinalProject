@@ -6,7 +6,6 @@ import numpy as np
 class rot():
 
   def __init__(self, step, dir):
-    GPIO.setmode(GPIO.BCM)
     self.step, self.dir = step, dir
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(self.step, GPIO.OUT, initial=0)

@@ -40,7 +40,7 @@ try:
       lin.move(xc)
       
       time.sleep(speed/1000)
-except:
+except KeyboardInterrupt:
   stepper.angle(0)
   GPIO.cleanup()
 
