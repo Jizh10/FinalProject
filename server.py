@@ -4,6 +4,7 @@ import json
 from Linear import Linear
 from rotational import rot
 from distance import ultrasonic
+from photoresistor import light
 import numpy as np
 
 
@@ -141,6 +142,7 @@ def main():
     linearMotion = Linear()
     rotation = rot(19,26)
     distSensor = ultrasonic(22,27)
+    photoRes = light(0x48)
     currDist = 0
     print('Initializing camera')
     with picamera.PiCamera() as camera:
@@ -196,6 +198,10 @@ def main():
                   data['takeImage'] = None
                   f.seek(0)
                   json.dump(data,f)
+                
+                brightness = photoRes.read(0)
+                print(brightness)
+                camera.brightness = 75
                 camera.wait_recording(1)
         except KeyboardInterrupt:
             pass
