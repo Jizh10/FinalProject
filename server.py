@@ -256,7 +256,7 @@ def main():
                     # calculate the angle
                     theta = np.arctan((x0-xc)/y0)
                     # go to the angle
-                    rotation.angle(theta+0.001, speed=20)
+                    rotation.angle(theta+0.001, speed=20*16)
                     # go to the position
                     linearMotion.move(xc)
                     sleep(.1/1000)
