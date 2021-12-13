@@ -8,6 +8,8 @@ import RPi.GPIO as GPIO
 sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
 
+lin.move(0)
+
 stepper = rotational.rot(step = 19, dir = 26)
 
 dists = []
@@ -24,17 +26,18 @@ theta0 = 0.001
 x0 = dist*np.sin(theta0)
 y0 = dist*np.cos(theta0)
 try:
-  for i in np.append(range(0,900),range(900,0,-1)):
-    xc = i
-    print(i)
-    theta = np.arctan((x0-xc)/y0)
-    print("theta {:f}".format(theta))
-    print("xc {:f}".format(xc))
-    print("y0 {:f}".format(y0))
-    stepper.angle(theta)
-    lin.move(xc)
-    
-    time.sleep(0.001)
+  while True:
+    for i in np.append(range(0,900),range(900,0,-1)):
+      xc = i
+      print(i)
+      theta = np.arctan((x0-xc)/y0)
+      print("theta {:f}".format(theta))
+      print("xc {:f}".format(xc))
+      print("y0 {:f}".format(y0))
+      stepper.angle(theta)
+      lin.move(xc)
+      
+      time.sleep(0.0005)
 except:
   stepper.angle(0)
   GPIO.cleanup()
