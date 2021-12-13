@@ -101,8 +101,10 @@ with open('final_project.txt', 'w') as fout:
 while detect == 'detect':
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)
+    print('data loaded')
     distance = "Object Detect: " +  data['detect'] + "mm"
 
+print('out of while loop')
 
 # html page format
 html = Template("""Content-type: text/html
