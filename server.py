@@ -219,7 +219,10 @@ def main():
                     if i % 90 == 0:
                       imageIndex += 1
                       camera.capture('/var/www/html%s.jpg' % imageIndex, use_video_port=True)
-                      
+                    brightness = photoRes.read(0)
+                    camera.brightness = int(brightness)
+                    camera.wait_recording(1)  
+
                   linearMotion.move(setPos)
 
                   data['auto'] = None
