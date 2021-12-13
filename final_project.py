@@ -29,7 +29,7 @@ output['takeImage'] = takeImage
 output['detect'] = detect
 
 if init == '1':
-  prevData = {'displayAngle':0, 'displayPos':0, 'displaySetPos':0, 'displaySetAngle':0}
+  prevData = {'displayAngle':"0", 'displayPos':"0", 'displaySetPos':"0", 'displaySetAngle':"0"}
 else:
   with open('final_project.txt', 'r') as fin:
     prevData = json.load(fin)
