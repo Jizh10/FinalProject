@@ -143,7 +143,9 @@ def main():
     rotation = rot(19,26)
     distSensor = ultrasonic(22,27)
     photoRes = light(0x48)
-    currDist = 0
+    setDist = 0
+    setPos = 0
+    setAngle = 0
     print('Initializing camera')
     with picamera.PiCamera() as camera:
         camera.rotation = 180
@@ -185,7 +187,7 @@ def main():
                 
                 if data['detect'] == 'detect':
                   distance = distSensor.getDist()
-                  currDist = distance
+                  setDist = distance
                   data['detect'] = str(distance)
                   f.seek(0)
                   json.dump(data,f)
@@ -199,8 +201,30 @@ def main():
                   f.seek(0)
                   json.dump(data,f)
                 
+                if data['posSet'] == 'set postion':
+                  setPos = 20*int(data['displayPos'])
+                  setAngle = float(data['displayAngle'])/180.0*np.pi
+
+                if data['auto'] == 'execute auto mode':
+                  x0 = setPos + setDist*np.sin(setAngle)
+                  y0 = setDist*np.cos(setAngle)
+                  linearMotion.move(0)
+
+                  for i in range(0, 900):
+                    xc = i
+                    theta = np.arctan((x0-xc)/y0)
+                    rotation.angle(theta, speed=20)
+                    linearMotion.move(xc)
+                    time.sleep(.1/1000)
+                    if i % 90 == 0:
+                      imageIndex += 1
+                      camera.capture('/var/www/html%s.jpg' % imageIndex, use_video_port=True)
+                  
+                  data['auto'] = None
+                  f.seek(0)
+                  json.dump(data,f)
+                
                 brightness = photoRes.read(0)
-                print(brightness)
                 camera.brightness = int(brightness)
                 camera.wait_recording(1)
         except KeyboardInterrupt:
