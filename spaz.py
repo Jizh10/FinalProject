@@ -39,7 +39,7 @@ try:
       stepper.angle(theta)
       lin.move(xc)
       
-      time.sleep(speed/1000)
+      time.sleep(int(speed)/1000)
 except KeyboardInterrupt:
   stepper.angle(0)
   GPIO.cleanup()
