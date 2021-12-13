@@ -213,7 +213,7 @@ def main():
                   for i in range(0, 900):
                     xc = i
                     theta = np.arctan((x0-xc)/y0)
-                    rotation.angle(theta, speed=20)
+                    rotation.angle(theta+0.001, speed=20)
                     linearMotion.move(xc)
                     sleep(.1/1000)
                     if i % 90 == 0:
