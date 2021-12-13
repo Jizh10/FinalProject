@@ -207,7 +207,7 @@ def main():
                   setAngle = float(data['displayAngle'])/180.0*np.pi
 
                 if data['auto'] == 'auto':
-                  data['auto'] = None
+                  data['auto'] = "not auto"
                   f.seek(0)
                   json.dump(data,f)
                   x0 = setPos + setDist*np.sin(setAngle)
