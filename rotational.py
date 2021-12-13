@@ -38,7 +38,7 @@ class rot():
       self.partialsteps += steps
     else: self.partialsteps = 0
 
-    if max(int(steps),int(self.partialsteps)) < 8:
+    if max(int(steps),int(self.partialsteps)) >= 8:
       #on and off on the step input for every step
       for i in range(max(int(steps),int(self.partialsteps))):
         GPIO.output(self.step,1)
