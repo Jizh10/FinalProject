@@ -220,8 +220,7 @@ def main():
                       imageIndex += 1
                       camera.capture('/var/www/html%s.jpg' % imageIndex, use_video_port=True)
                     brightness = photoRes.read(0)
-                    camera.brightness = int(brightness)
-                    camera.wait_recording(1)  
+                    camera.brightness = int(brightness)  
 
                   linearMotion.move(setPos)
 
