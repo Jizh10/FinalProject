@@ -97,7 +97,7 @@ output['displayAngle'] = displayAngle
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
-if detect == 'detect':
+if detect == 'y':
   time.sleep(0.1)
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)
@@ -221,7 +221,7 @@ body {font-family: Arial;}
   <br>
   <p>{{distance}}</p>
   <form action="/cgi-bin/final_project.py" method="POST">
-    <input type = "submit" name = "detect" value = "detect">
+    <input type = "submit" name = "detect" value = "y">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
     <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
