@@ -201,7 +201,7 @@ def main():
                 
                 brightness = photoRes.read(0)
                 print(brightness)
-                camera.brightness = 75
+                camera.brightness = brightness
                 camera.wait_recording(1)
         except KeyboardInterrupt:
             pass

@@ -5,6 +5,7 @@ class light:
   def __init__(self,address):
     self.bus = smbus.SMBus(1)
     self.address = address
+    self.conversion_factor = (100/255)#conversion factor to compensate for diffrent light levels
 
   def read(self,chn): #channel
       try:
@@ -12,7 +13,9 @@ class light:
           self.bus.read_byte(self.address) # dummy read to start conversion
       except Exception as e:
           print ("Address: %s \n%s" % (self.address,e))
-      return self.bus.read_byte(self.address)
+
+
+      return self.conversion_factor*self.bus.read_byte(self.address)
 
   def write(self,val):
       try:
