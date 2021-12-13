@@ -140,7 +140,7 @@ def main():
     imageIndex = 1
     linearMotion = Linear()
     rotation = rot(19,26)
-    ultrasonic = ultrasonic(22,27)
+    distSensor = ultrasonic(22,27)
     currDist = 0
     print('Initializing camera')
     with picamera.PiCamera() as camera:
@@ -182,7 +182,7 @@ def main():
                 rotation.angle(float(data['displayAngle'])/180.0*np.pi)
                 
                 if data['detect'] == 'detect':
-                  distance = ultrasonic.getDist()
+                  distance = distSensor.getDist()
                   currDist = distance
                   data['detect'] = str(int(distance))
 
