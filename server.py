@@ -255,12 +255,14 @@ def main():
                     xc = i
                     # calculate the angle
                     theta = np.arctan((x0-xc)/y0)
-                    # go to the position
-                    linearMotion.move(xc)
                     # go to the angle
                     rotation.angle(theta+0.00001, speed=20*16*5)
-                    print(theta)
+
                     sleep(.1/1000)
+                    # go to the position
+                    linearMotion.move(xc)
+                    print(theta)
+                    
                     # if its an increment of 90mm take an image (total of 10)
                     if i % 90 == 0:
                       imageIndex += 1
