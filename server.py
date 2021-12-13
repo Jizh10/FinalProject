@@ -181,10 +181,10 @@ def main():
                 linearMotion.move(20*int(data['displayPos']))
                 rotation.angle(float(data['displayAngle'])/180.0*np.pi)
                 
-                if data['detect'] == 'y':
+                if data['detect'] == 'detect':
                   distance = distSensor.getDist()
                   currDist = distance
-                  data['detect'] = str(int(distance))
+                  data['detect'] = str(distance)
 
                 if data['takeImage'] == '1':
                   imageIndex += 1
