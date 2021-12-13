@@ -16,6 +16,7 @@ try:
 
       linearMotion.move(20*int(data['displayPos']))
       rotation.angle(float(data['displayAngle'])/180.0*np.pi)
+      
       # print('data loaded')
       # if data['takeImage'] == '1':
       #   print('command received')
