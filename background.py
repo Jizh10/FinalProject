@@ -31,6 +31,7 @@ try:
       if data['takeImage'] == '1':
       #   print('command received')
         camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
+        imageIndex +=1
         #print('image taken')
         data['takeImage'] = None
         f.seek(0)

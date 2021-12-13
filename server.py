@@ -185,6 +185,8 @@ def main():
                   distance = distSensor.getDist()
                   currDist = distance
                   data['detect'] = str(distance)
+                  f.seek(0)
+                  json.dump(data,f)
 
                 if data['takeImage'] == '1':
                   imageIndex += 1
@@ -192,8 +194,8 @@ def main():
                   camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
                   print('image taken')
                   data['takeImage'] = None
-                f.seek(0)
-                json.dump(data,f)
+                  f.seek(0)
+                  json.dump(data,f)
                 camera.wait_recording(1)
         except KeyboardInterrupt:
             pass
