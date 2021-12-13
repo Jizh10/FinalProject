@@ -32,11 +32,10 @@ try:
   while True:
     for i in np.append(range(0,900),range(900,0,-1)):
       xc = i
-      print(i)
       theta = np.arctan((x0-xc)/y0)
-      print("theta {:f}".format(theta))
-      print("xc {:f}".format(xc))
-      print("y0 {:f}".format(y0))
+      #print("theta {:f}".format(theta))
+      #print("xc {:f}".format(xc))
+      #print("y0 {:f}".format(y0))
       stepper.angle(theta, speed= 20)
       lin.move(xc)
       

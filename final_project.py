@@ -98,6 +98,12 @@ output['displayAngle'] = displayAngle
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
+while detect == 'detect':
+  with open('final_project.txt', 'r') as fin:
+    data = json.load(fin)
+    distance = "Object Detect: " +  data['detect'] + "mm"
+
+
 # html page format
 html = Template("""Content-type: text/html
 
