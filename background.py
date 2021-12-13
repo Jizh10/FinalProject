@@ -9,7 +9,7 @@ import numpy as np
 camera = PiCamera()
 linearMotion = Linear()
 rotation = rot(19,26)
-
+ultrasonic = ultrasonic(22,27)
 
 try:
   while True:
@@ -18,7 +18,8 @@ try:
 
       linearMotion.move(20*int(data['displayPos']))
       rotation.angle(float(data['displayAngle'])/180.0*np.pi)
-
+      if data['ultrasonic'] ==
+        distance = ultrasonic.getDist()
       
       # print('data loaded')
       # if data['takeImage'] == '1':
