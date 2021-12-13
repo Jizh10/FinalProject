@@ -22,7 +22,7 @@ try:
       rotation.angle(float(data['displayAngle'])/180.0*np.pi)
       if data['detect'] == 'detect':
         distance = ultrasonic.getDist()
-        data['detect'] = str(distance)
+        data['detect'] = str(int(distance))
       # print('data loaded')
       if data['takeImage'] == '1':
       #   print('command received')
