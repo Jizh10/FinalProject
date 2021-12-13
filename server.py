@@ -223,7 +223,7 @@ def main():
                     if i % 90 == 0:
                       imageIndex += 1
                       print("image taken")
-                      camera.capture('/var/www/html%s.jpg' % imageIndex, use_video_port=True)
+                      camera.capture('/var/www/html/%s.jpg' % imageIndex)
                     brightness = photoRes.read(0)
                     camera.brightness = int(brightness)  
 
