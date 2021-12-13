@@ -98,7 +98,7 @@ with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
 if detect == 'detect':
-  time.sleep(0.1)
+  time.sleep(1)
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)
     distance = "Object Detect: " +  str(int(data['detect'])) + "mm"

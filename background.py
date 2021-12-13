@@ -31,6 +31,8 @@ try:
         camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
         #print('image taken')
         data['takeImage'] = None
+      
+      print(data)
       #f.seek(0)
       #json.dump(data,f)
     with open("/usr/lib/cgi-bin/final_project.txt", 'w') as f:
