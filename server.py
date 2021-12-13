@@ -206,7 +206,7 @@ def main():
                   setPos = 20*int(data['displayPos'])
                   setAngle = float(data['displayAngle'])/180.0*np.pi
 
-                if data['auto'] == 'execute auto mode':
+                if data['auto'] == 'auto':
                   data['auto'] = None
                   f.seek(0)
                   json.dump(data,f)

@@ -14,7 +14,7 @@ posSet = data.getvalue('set position')
 image = data.getvalue('image')
 imageIndex = data.getvalue('image index')
 lastImageIndex = data.getvalue('last image index')
-auto = data.getvalue('execute auto mode')
+auto = data.getvalue('auto')
 takeImage = data.getvalue('take image')
 init = data.getvalue('init')
 detect = data.getvalue('detect')
@@ -83,7 +83,7 @@ else:
   if posSet == 'set position':
     displaySetPos = prevData['displayPos']
     displaySetAngle = prevData['displayAngle']
-  elif auto == 'execute auto mode':
+  elif auto == 'auto':
     lastImageIndex = str(int(lastImageIndex) + 10)
   else:
     displaySetPos = prevData['displaySetPos']
@@ -214,7 +214,7 @@ body {font-family: Arial;}
   </form>
   <br>
   <form action="/cgi-bin/final_project.py" method="POST">
-    <input type = "submit" name = "execute auto mode" value = "execute auto mode">
+    <input type = "submit" name = "auto" value = "auto">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
     <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0">
