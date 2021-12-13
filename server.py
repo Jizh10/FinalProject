@@ -181,7 +181,7 @@ def main():
                 linearMotion.move(20*int(data['displayPos']))
                 rotation.angle(float(data['displayAngle'])/180.0*np.pi)
                 
-                if data['detect'] == 'detect':
+                if data['detect'] == 'y':
                   distance = distSensor.getDist()
                   currDist = distance
                   data['detect'] = str(int(distance))
