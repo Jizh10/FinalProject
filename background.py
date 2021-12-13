@@ -29,8 +29,8 @@ try:
         camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
         #print('image taken')
         data['takeImage'] = None
-      f.seek(0)
-      json.dump(data,f)
+      #f.seek(0)
+      #json.dump(data,f)
       time.sleep(0.1)
 except KeyboardInterrupt:
   print('\nExiting')
