@@ -100,6 +100,7 @@ with open('final_project.txt', 'w') as fout:
 while detect == 'detect':
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)
+    detect = data['detect']
     if detect != 'detect':
       distance = "Object Detect: " +  str(int(float(data['detect']))) + "mm"
 
