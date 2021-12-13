@@ -277,7 +277,7 @@ body {font-family: Arial;}
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
-    <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
   </form>
   <br>
