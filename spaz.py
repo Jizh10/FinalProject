@@ -5,6 +5,7 @@ import rotational
 import Linear
 import RPi.GPIO as GPIO
 speed = input()
+GPIO.setmode(GPIO.BCM)
 
 sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
