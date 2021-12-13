@@ -239,7 +239,8 @@ def main():
                   # set the x, y position of the object
                   x0 = setPos + setDist*np.sin(setAngle)
                   y0 = setDist*np.cos(setAngle)
-                  print("x0 is: %f")
+                  print("x0 is: %f" % x0)
+                  print("y0 is: %f" % y0)
                   # go to 0 point
                   linearMotion.move(0)
                   # set the angle to 0

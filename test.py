@@ -9,7 +9,7 @@ sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
 
 stepper = rotational.rot(step = 19, dir = 26)
-
+lin.move(500)
 dists = []
 #average
 for i in range(10):
@@ -21,8 +21,8 @@ dist = np.average(dists)
 print("dist =")
 print(dist)
 theta0 = 0.001
-lin.move(500)
-x0 = 500+ dist*np.sin(theta0)
+
+x0 = 500 + dist*np.sin(theta0)
 y0 = dist*np.cos(theta0)
 try:
   for i in range(900):
