@@ -2,8 +2,7 @@
 from jinja2 import Template
 import cgi
 import json
-from urllib.request import urlopen
-from urllib.parse import urlencode
+import time
 
 # parse the data into json format
 data = cgi.FieldStorage()
@@ -98,7 +97,8 @@ output['displayAngle'] = displayAngle
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
-while detect == 'detect':
+if detect == 'detect':
+  time.sleep(0.1)
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)
     print('data loaded')
