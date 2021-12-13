@@ -215,11 +215,13 @@ def main():
                     theta = np.arctan((x0-xc)/y0)
                     rotation.angle(theta, speed=20)
                     linearMotion.move(xc)
-                    time.sleep(.1/1000)
+                    sleep(.1/1000)
                     if i % 90 == 0:
                       imageIndex += 1
                       camera.capture('/var/www/html%s.jpg' % imageIndex, use_video_port=True)
-                  
+                      
+                  linearMotion.move(setPos)
+
                   data['auto'] = None
                   f.seek(0)
                   json.dump(data,f)
