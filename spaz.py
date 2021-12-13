@@ -37,7 +37,7 @@ try:
       print("theta {:f}".format(theta))
       print("xc {:f}".format(xc))
       print("y0 {:f}".format(y0))
-      stepper.angle(theta)
+      stepper.angle(theta, speed= 20)
       lin.move(xc)
       
       time.sleep(float(speed)/1000)
