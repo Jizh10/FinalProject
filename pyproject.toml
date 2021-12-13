@@ -8,6 +8,7 @@ authors = ["jzheng10 <<>>"]
 python = "^3.8"
 Jinja2 = "^3.0.3"
 odrive = "^0.5.4"
+ws4py = "^0.5.1"
 
 [tool.poetry.dev-dependencies]
 
