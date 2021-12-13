@@ -7,7 +7,6 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 stepper = rotational.rot(step = 19, dir = 26)
-speed = input()
 sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
 
@@ -29,9 +28,13 @@ x0 = dist*np.sin(theta0)
 y0 = dist*np.cos(theta0)
 try:
   while True:
-    for i in np.append(range(0,900,50),range(900,0,-50)):
+    for i in np.append(range(0,900),range(900,0,-1)):
       xc = i
+      theta = np.arctan((x0-xc)/y0)
+      print("theta {:f}".format(theta))
       print("xc {:f}".format(xc))
+      print("y0 {:f}".format(y0))
+      stepper.angle(theta, speed= 20)
       lin.move(xc)
       time.sleep(.1/1000)
 except KeyboardInterrupt:
