@@ -16,7 +16,7 @@ class rot():
   def home(self, val = 0):
     self.cur_angle = val
 
-  def angle(self, angle, speed = 5): #speed in rot/sec
+  def angle(self, angle, speed = 5*16): #speed in rot/sec
     
     #calculate steps from angle in radians
     steps = (25.25/13.4)*200*16*abs(angle - self.cur_angle)/(2*np.pi)
