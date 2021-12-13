@@ -38,7 +38,7 @@ try:
       #print("y0 {:f}".format(y0))
       #stepper.angle(theta, speed= 20)
       lin.move(xc)
-      time.sleep(float(speed)/1000)
+      #time.sleep(float(speed)/1000)
 except KeyboardInterrupt:
   stepper.angle(0)
   GPIO.cleanup()
