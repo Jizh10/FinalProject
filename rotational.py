@@ -22,7 +22,7 @@ class rot():
     steps = (25.25/13.4)*200*16*abs(angle - self.cur_angle)/(2*np.pi)
     #(25.25/13.4) term is gear reduction
     #print("steps {:f}".format(max(int(steps),int(self.partialsteps))))
-
+    print("steps {:f}".format(steps))
     #if the angle is positive, go one way, negitive go the other
     if angle - self.cur_angle < 0:
       GPIO.output(self.dir,0)
