@@ -7,6 +7,7 @@ import time
 import numpy as np
 
 camera = PiCamera()
+camera.rotation = 180
 linearMotion = Linear()
 rotation = rot(19,26)
 ultrasonic = ultrasonic(22,27)
@@ -25,8 +26,8 @@ try:
       # print('data loaded')
       if data['takeImage'] == '1':
       #   print('command received')
-        camera.capture('/var/www/html/{imageIndex}.jpg')
-        print('image taken')
+        camera.capture('/var/www/html/%s.jpg' % imageIndex, use_video_port=True)
+        #print('image taken')
         data['takeImage'] = None
       f.seek(0)
       json.dump(data,f)
