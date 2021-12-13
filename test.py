@@ -25,7 +25,7 @@ lin.move(500)
 x0 = 500+ dist*np.sin(theta0)
 y0 = dist*np.cos(theta0)
 try:
-  for i in range(1000):
+  for i in range(900):
     xc = i
 
     theta = np.arctan((x0-xc)/y0)
