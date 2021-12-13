@@ -5,7 +5,7 @@ from Linear import Linear
 from rotational import rot
 from distance import ultrasonic
 from photoresistor import light
-from RPi.GPIO import GPIO
+import RPi.GPIO as GPIO
 import numpy as np
 
 
