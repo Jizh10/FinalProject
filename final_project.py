@@ -97,11 +97,11 @@ output['displayAngle'] = displayAngle
 with open('final_project.txt', 'w') as fout:
   json.dump(output,fout)
 
-if detect == 'detect':
-  time.sleep(1)
+while detect == 'detect':
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)
-    distance = "Object Detect: " +  str(int(float(data['detect']))) + "mm"
+    if detect != 'detect':
+      distance = "Object Detect: " +  str(int(float(data['detect']))) + "mm"
 
 
 # html page format
