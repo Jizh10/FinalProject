@@ -13,10 +13,11 @@ class Linear():
       #  time.sleep(0.1)
 
       self.dvr.axis1.requested_state = 8#AXIS_STATE_CLOSED_LOOP_CONTROL
+      self.dvr.clear_errors()
 
       
   def move(self, pos, speed = 40): #pos in mm, #speed in rot/s
-    self.dvr.clear_errors()
+    
     #self.dvr.axis1.requested_state = #8#AXIS_STATE_CLOSED_LOOP_CONTROL
     self.dvr.axis1.controller.config.vel_limit = speed
     self.curr_pos = pos
