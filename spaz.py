@@ -37,7 +37,7 @@ try:
       stepper.angle(theta)
       lin.move(xc)
       
-      time.sleep(0.0005)
+      time.sleep(0.005)
 except:
   stepper.angle(0)
   GPIO.cleanup()
