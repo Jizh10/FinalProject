@@ -101,7 +101,7 @@ if detect == 'detect':
   time.sleep(0.1)
   with open('final_project.txt', 'r') as fin:
     data = json.load(fin)
-    distance = "Object Detect: " +  data['detect'] + "mm"
+    distance = "Object Detect: " +  str(int(data['detect'])) + "mm"
 
 
 # html page format
