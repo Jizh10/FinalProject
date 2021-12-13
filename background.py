@@ -1,6 +1,7 @@
 from picamera import PiCamera
 from Linear import Linear
 from rotational import rot
+from distance import ultrasonic
 import json
 import time
 import numpy as np
@@ -9,6 +10,7 @@ camera = PiCamera()
 linearMotion = Linear()
 rotation = rot(19,26)
 
+
 try:
   while True:
     with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
@@ -16,6 +18,7 @@ try:
 
       linearMotion.move(20*int(data['displayPos']))
       rotation.angle(float(data['displayAngle'])/180.0*np.pi)
+
       
       # print('data loaded')
       # if data['takeImage'] == '1':

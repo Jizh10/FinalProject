@@ -4,6 +4,7 @@ import numpy as np
 import rotational
 import Linear
 import RPi.GPIO as GPIO
+speed = input()
 
 sens = distance.ultrasonic(echo = 22, trig = 27)
 lin = Linear.Linear()
@@ -37,7 +38,7 @@ try:
       stepper.angle(theta)
       lin.move(xc)
       
-      time.sleep(0.0005)
+      time.sleep(speed/1000)
 except:
   stepper.angle(0)
   GPIO.cleanup()
