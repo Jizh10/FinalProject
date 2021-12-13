@@ -32,7 +32,7 @@ class rot():
     else: self.partialsteps = 0
 
     for i in range(max(int(steps),int(self.partialsteps))):
-            GPIO.output(self.step,1)
-            time.sleep(1/(speed*200))
-            GPIO.output(self.step,0)
-            time.sleep(1/(speed*200))
+      GPIO.output(self.step,1)
+      time.sleep(1/(speed*200))
+      GPIO.output(self.step,0)
+      time.sleep(1/(speed*200))

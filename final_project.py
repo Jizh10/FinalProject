@@ -18,6 +18,8 @@ lastImageIndex = data.getvalue('last image index')
 auto = data.getvalue('execute auto mode')
 takeImage = data.getvalue('take image')
 init = data.getvalue('init')
+detect = data.getvalue('detect')
+
 
 output['step'] = step
 output['inputPos'] = inputPos
@@ -25,6 +27,7 @@ output['inputAngle'] = inputAngle
 output['posSet'] = posSet
 output['auto'] = auto
 output['takeImage'] = takeImage
+output['detect'] = detect
 
 if init == '1':
   prevData = {'displayAngle':0, 'displayPos':0, 'displaySetPos':0, 'displaySetAngle':0}
@@ -36,6 +39,7 @@ normalTab = ""
 autoTab = ""
 stepTab = ""
 posTab = ""
+distance = "No Object Detected"
 displayAngle = prevData['displayAngle']
 displayPos = prevData['displayPos']
 displaySetPos = prevData['displaySetPos']
