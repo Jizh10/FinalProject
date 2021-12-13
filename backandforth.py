@@ -28,7 +28,7 @@ x0 = dist*np.sin(theta0)
 y0 = dist*np.cos(theta0)
 try:
   while True:
-    for i in np.append(range(0,900,5),range(900,0,-5)):
+    for i in np.append(range(0,900,3),range(900,0,-3)):
       xc = i
       theta = np.arctan((x0-xc)/y0)
       #print("theta {:f}".format(theta))
