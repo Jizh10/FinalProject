@@ -226,6 +226,8 @@ def main():
                   # set the position
                   setPos = 20*int(data['displayPos'])
                   setAngle = float(data['displayAngle'])/180.0*np.pi
+                  print(setPos)
+                  print(setAngle)
 
                 # check if the user wants to use the auto mode
                 if data['auto'] == 'auto':
@@ -239,6 +241,7 @@ def main():
                   # set the x, y position of the object
                   x0 = setPos + setDist*np.sin(setAngle)
                   y0 = setDist*np.cos(setAngle)
+                  print('set Position is %f' % setPos)
                   print("x0 is: %f" % x0)
                   print("y0 is: %f" % y0)
                   # go to 0 point
