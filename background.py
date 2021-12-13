@@ -5,6 +5,7 @@ from distance import ultrasonic
 import json
 import time
 import numpy as np
+import RPi.GPIO as GPIO
 
 camera = PiCamera()
 camera.rotation = 180
@@ -15,7 +16,8 @@ imageIndex = 1
 
 try:
   while True:
-    with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
+    data = {}
+    with open("/usr/lib/cgi-bin/final_project.txt",'r') as f:
       data = json.load(f)
 
       linearMotion.move(20*int(data['displayPos']))
@@ -31,9 +33,13 @@ try:
         data['takeImage'] = None
       #f.seek(0)
       #json.dump(data,f)
+    with open("/usr/lib/cgi-bin/final_project.txt", 'w') as f:
+      json.dump(data, f)
       time.sleep(0.1)
 except KeyboardInterrupt:
   print('\nExiting')
+finally:
+  GPIO.cleanup()
 
         
 
