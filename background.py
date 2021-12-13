@@ -17,7 +17,7 @@ imageIndex = 1
 try:
   while True:
     data = {}
-    with open("/usr/lib/cgi-bin/final_project.txt",'r') as f:
+    with open("/usr/lib/cgi-bin/final_project.txt",'r+') as f:
       data = json.load(f)
 
       linearMotion.move(20*int(data['displayPos']))
