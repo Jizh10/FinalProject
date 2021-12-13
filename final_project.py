@@ -234,7 +234,7 @@ body {font-family: Arial;}
     <input type = "image" src = "http://192.168.0.210/camera.jpg" alt = "Submit" width = "100" height = "100">
     <input type = "hidden" name = "take image" value = "1">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
-    <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
   </form>
   <p>Current Angle (from 0 to 360): {{ang}} </p>
@@ -243,7 +243,7 @@ body {font-family: Arial;}
     <input type = "text" name = "angle">
     <input type = "submit" value = "adjust">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
-    <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
   </form>
   <br>
@@ -257,7 +257,7 @@ body {font-family: Arial;}
     <input type = "submit" name = "step" value = "left step">
     <input type = "submit" name = "step" value = "right step">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
-    <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
   </form>
 </div>
@@ -268,7 +268,7 @@ body {font-family: Arial;}
     <input type = "image" src = "http://192.168.0.210/camera.jpg" alt = "Submit" width = "100" height = "100">
     <input type = "hidden" name = "take image" value = "1">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
-    <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
   </form>
   <p>Current Angle (from 0 to 360): {{ang}} </p>
@@ -291,7 +291,7 @@ body {font-family: Arial;}
     <input type = "text" name = "position">
     <input type = "submit" value = "adjust">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
-    <input type = "hidden" name = "last image index" value = {lastImageIndex}}>
+    <input type = "hidden" name = "last image index" value = {{lastImageIndex}}>
     <input type = "hidden" name = "init" value = "0"> 
   </form>
 </div>
