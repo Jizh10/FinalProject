@@ -430,10 +430,18 @@ category = "main"
 optional = false
 python-versions = "*"
 
+[[package]]
+name = "ws4py"
+version = "0.5.1"
+description = "WebSocket client and server library for Python 2 and 3 as well as PyPy"
+category = "main"
+optional = false
+python-versions = "*"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "fb8a95610cfc726152597e16798869fc6453c7f0bf394c0b09d4444a65458239"
+content-hash = "9fd20da11b4b95bd50adfe44fbcbec7e62da9ecad0e62191636e91003860a6d2"
 
 [metadata.files]
 appnope = [
@@ -805,4 +813,7 @@ urllib3 = [
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
     {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
+]
+ws4py = [
+    {file = "ws4py-0.5.1.tar.gz", hash = "sha256:29d073d7f2e006373e6a848b1d00951a1107eb81f3742952be905429dc5a5483"},
 ]

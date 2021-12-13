@@ -24,7 +24,7 @@ theta0 = 0.001
 x0 = dist*np.sin(theta0)
 y0 = dist*np.cos(theta0)
 try:
-  for i in enumerate(np.concatonate(range(900),range(900,0))):
+  for i in enumerate(np.append(range(0,900),range(900,0))):
     xc = i
     print(i)
     theta = np.arctan((x0-xc)/y0)
