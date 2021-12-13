@@ -5,6 +5,7 @@ from Linear import Linear
 from rotational import rot
 from distance import ultrasonic
 from photoresistor import light
+from RPi.GPIO import GPIO
 import numpy as np
 
 
@@ -227,7 +228,7 @@ def main():
                     camera.brightness = int(brightness)  
 
                   linearMotion.move(setPos)
-
+                  rotation.angle(setAngle)
                   
                 
                 brightness = photoRes.read(0)
@@ -248,6 +249,8 @@ def main():
             http_thread.join()
             print('Waiting for websockets thread to finish')
             websocket_thread.join()
+            GPIO.cleanup()
+
 
 
 if __name__ == '__main__':
