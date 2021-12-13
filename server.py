@@ -258,7 +258,7 @@ def main():
                     # go to the angle
                     rotation.angle(theta+0.00001, speed=20*16*5)
 
-                    sleep(.1/1000)
+                    sleep(5/1000)
                     # go to the position
                     linearMotion.move(xc)
                     print(theta)
@@ -273,6 +273,7 @@ def main():
                     camera.brightness = int(brightness)  
 
                   # go back to the original position and angle
+                  print(setAngle)
                   linearMotion.move(setPos)
                   rotation.angle(setAngle)
                   
