@@ -258,7 +258,7 @@ def main():
                     # go to the position
                     linearMotion.move(xc)
                     # go to the angle
-                    rotation.angle(theta+0.00001, speed=20*16)
+                    rotation.angle(theta+0.00001, speed=20*16*5)
                     print(theta)
                     sleep(.1/1000)
                     # if its an increment of 90mm take an image (total of 10)
