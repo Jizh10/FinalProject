@@ -17,17 +17,23 @@ class rot():
     self.cur_angle = val
 
   def angle(self, angle, speed = 5): #speed in rot/sec
+    
+    #calculate steps from angle in radians
     steps = (25.25/13.4)*200*abs(angle - self.cur_angle)/(2*np.pi)
     #(25.25/13.4) term is gear reduction
     #print("steps {:f}".format(max(int(steps),int(self.partialsteps))))
-    #print(speed)
+
+    #if the angle is positive, go one way, negitive go the other
     if angle - self.cur_angle < 0:
       GPIO.output(self.dir,0)
     else:
       GPIO.output(self.dir,1)
 
+    #reset current angle. steps is only is given by the desired angle minus the current angle
     self.cur_angle = angle
     
+    #a neat hack
+    #the code doesnt work if the angle val is small enough that less than one step is generated, so this code sums all of the unused step bits and h
     if max(int(steps),int(self.partialsteps)) < 1:
       self.partialsteps += steps
     else: self.partialsteps = 0

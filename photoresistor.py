@@ -1,5 +1,7 @@
 import smbus
 
+#this class mostly just uses the code from class for dealing with the PCF8591 ADC
+
 class light:
 
   def __init__(self,address):

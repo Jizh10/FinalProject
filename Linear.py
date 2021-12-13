@@ -24,8 +24,9 @@ class Linear():
   def move(self, pos, speed = 70): #pos in mm, #speed in rot/s
 
     self.dvr.axis1.controller.config.vel_limit = speed
-    self.curr_pos = pos
-    self.dvr.axis1.controller.input_pos = -1*pos/(np.pi*self.pulley_diameter)
+    self.curr_pos = pos #current position for internal refrence 
+
+    self.dvr.axis1.controller.input_pos = -1*pos/(np.pi*self.pulley_diameter) #calculating the val in turns/s that needs to be given to the driver 
     
   def home(self):
     #you dont need to call this now, itll do it on boot
