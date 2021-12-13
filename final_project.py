@@ -219,7 +219,7 @@ body {font-family: Arial;}
     <input type = "hidden" name = "init" value = "0">
   </form>
   <br>
-  <p>No Object Detected</p>
+  <p>{{distance}}</p>
   <form action="/cgi-bin/final_project.py" method="POST">
     <input type = "submit" name = "detect" value = "detect">
     <input type = "hidden" name = "image index" value = {{imageIndex}}>
@@ -329,6 +329,7 @@ html = html.render(
   setPos=displaySetPos,
   setAngle=displaySetAngle,
   imageIndex=imageIndex,
-  lastImageIndex=lastImageIndex
+  lastImageIndex=lastImageIndex,
+  distance=distance
 )
 print(html)
