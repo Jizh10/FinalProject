@@ -35,8 +35,8 @@ try:
       print(data)
       #f.seek(0)
       #json.dump(data,f)
-    with open("/usr/lib/cgi-bin/final_project.txt", 'w') as f:
-      json.dump(data, f)
+    #with open("/usr/lib/cgi-bin/final_project.txt", 'w') as f:
+      #json.dump(data, f)
       time.sleep(0.1)
 except KeyboardInterrupt:
   print('\nExiting')
